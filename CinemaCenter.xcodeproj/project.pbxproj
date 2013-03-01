@@ -1,0 +1,624 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		66494A5A16E106740042C942 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494A5916E106740042C942 /* UIKit.framework */; };
+		66494A5C16E106740042C942 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494A5B16E106740042C942 /* Foundation.framework */; };
+		66494A5E16E106740042C942 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494A5D16E106740042C942 /* CoreGraphics.framework */; };
+		66494A6416E106740042C942 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 66494A6216E106740042C942 /* InfoPlist.strings */; };
+		66494A6616E106740042C942 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494A6516E106740042C942 /* main.m */; };
+		66494A8316E107690042C942 /* NDSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494A8216E107690042C942 /* NDSAppDelegate.m */; };
+		66494A8516E107740042C942 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66494A8416E107740042C942 /* MainStoryboard.storyboard */; };
+		66494A8B16E107870042C942 /* Core_Data.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 66494A8616E107870042C942 /* Core_Data.xcdatamodel */; };
+		66494A8C16E107870042C942 /* NDSMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494A8816E107870042C942 /* NDSMapAnnotation.m */; };
+		66494A8D16E107870042C942 /* NDSReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494A8A16E107870042C942 /* NDSReceipt.m */; };
+		66494AA616E1079E0042C942 /* NDSScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494A8F16E1079E0042C942 /* NDSScheduleViewController.m */; };
+		66494AA716E1079E0042C942 /* NDSMovieTicketsDatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494A9116E1079E0042C942 /* NDSMovieTicketsDatesViewController.m */; };
+		66494AA816E1079E0042C942 /* NDSMovieTicketsShowtimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494A9316E1079E0042C942 /* NDSMovieTicketsShowtimesViewController.m */; };
+		66494AA916E1079E0042C942 /* NDSMovieTicketsCheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494A9516E1079E0042C942 /* NDSMovieTicketsCheckoutViewController.m */; };
+		66494AAA16E1079E0042C942 /* NDSMoviePostersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494A9716E1079E0042C942 /* NDSMoviePostersViewController.m */; };
+		66494AAB16E1079E0042C942 /* NDSMovieDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494A9916E1079E0042C942 /* NDSMovieDescriptionViewController.m */; };
+		66494AAC16E1079E0042C942 /* NDSInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494A9B16E1079E0042C942 /* NDSInformationViewController.m */; };
+		66494AAD16E1079E0042C942 /* NDSMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494A9D16E1079E0042C942 /* NDSMapViewController.m */; };
+		66494AAE16E1079E0042C942 /* NDSMembershipsCheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494A9F16E1079E0042C942 /* NDSMembershipsCheckoutViewController.m */; };
+		66494AAF16E1079E0042C942 /* NDSMembershipsDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AA116E1079E0042C942 /* NDSMembershipsDetailsViewController.m */; };
+		66494AB016E1079E0042C942 /* NDSReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AA316E1079E0042C942 /* NDSReceiptsViewController.m */; };
+		66494AB116E1079E0042C942 /* NDSReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AA516E1079E0042C942 /* NDSReceiptViewController.m */; };
+		66494AC716E107B40042C942 /* NDSScheduleFilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AB416E107B40042C942 /* NDSScheduleFilmCell.m */; };
+		66494AC816E107B40042C942 /* NDSLoadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AB616E107B40042C942 /* NDSLoadCell.m */; };
+		66494AC916E107B40042C942 /* NDSErrorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AB816E107B40042C942 /* NDSErrorCell.m */; };
+		66494ACA16E107B40042C942 /* NDSMoviePosterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494ABA16E107B40042C942 /* NDSMoviePosterCell.m */; };
+		66494ACB16E107B40042C942 /* NDSShowtimeInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494ABC16E107B40042C942 /* NDSShowtimeInfoCell.m */; };
+		66494ACC16E107B40042C942 /* NDSTicketTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494ABE16E107B40042C942 /* NDSTicketTypeCell.m */; };
+		66494ACD16E107B40042C942 /* NDSMembershipDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AC016E107B40042C942 /* NDSMembershipDetailCell.m */; };
+		66494ACE16E107B40042C942 /* NDSSubtotalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AC216E107B40042C942 /* NDSSubtotalCell.m */; };
+		66494ACF16E107B40042C942 /* NDSReceiptCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AC416E107B40042C942 /* NDSReceiptCell.m */; };
+		66494AD016E107B40042C942 /* NDSProofOfPurchaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AC616E107B40042C942 /* NDSProofOfPurchaseCell.m */; };
+		66494AE016E107CA0042C942 /* icon_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494AD116E107CA0042C942 /* icon_transparent.png */; };
+		66494AE116E107CA0042C942 /* mappin.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494AD216E107CA0042C942 /* mappin.png */; };
+		66494AE216E107CA0042C942 /* jacket.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494AD316E107CA0042C942 /* jacket.png */; };
+		66494AE316E107CA0042C942 /* receipt.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494AD416E107CA0042C942 /* receipt.png */; };
+		66494AE516E107CA0042C942 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494AD616E107CA0042C942 /* icon@2x.png */; };
+		66494AE616E107CA0042C942 /* film_cell_writing.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494AD716E107CA0042C942 /* film_cell_writing.png */; };
+		66494AE716E107CA0042C942 /* ticket.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494AD816E107CA0042C942 /* ticket.png */; };
+		66494AE816E107CA0042C942 /* ellipsis.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494AD916E107CA0042C942 /* ellipsis.png */; };
+		66494AE916E107CA0042C942 /* spotlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494ADA16E107CA0042C942 /* spotlight.png */; };
+		66494AEA16E107CA0042C942 /* projector.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494ADB16E107CA0042C942 /* projector.png */; };
+		66494AEB16E107CA0042C942 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494ADC16E107CA0042C942 /* background.png */; };
+		66494AEC16E107CA0042C942 /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494ADD16E107CA0042C942 /* banner.png */; };
+		66494AED16E107CA0042C942 /* film_cell_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494ADE16E107CA0042C942 /* film_cell_transparent.png */; };
+		66494AEE16E107CA0042C942 /* film_cell_cut.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494ADF16E107CA0042C942 /* film_cell_cut.png */; };
+		66494AF216E107ED0042C942 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494AEF16E107ED0042C942 /* Default-568h@2x.png */; };
+		66494AF316E107ED0042C942 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494AF016E107ED0042C942 /* Default.png */; };
+		66494AF416E107ED0042C942 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494AF116E107ED0042C942 /* Default@2x.png */; };
+		66494AF616E108230042C942 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494AF516E108230042C942 /* MapKit.framework */; };
+		66494AF816E108290042C942 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494AF716E108290042C942 /* Security.framework */; };
+		66494AFA16E108440042C942 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494AF916E108440042C942 /* CoreData.framework */; };
+		66494AFF16E108570042C942 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494AFB16E108570042C942 /* libz.1.1.3.dylib */; };
+		66494B0016E108570042C942 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494AFC16E108570042C942 /* libz.1.2.5.dylib */; };
+		66494B0116E108570042C942 /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494AFD16E108570042C942 /* libz.1.dylib */; };
+		66494B0216E108570042C942 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494AFE16E108570042C942 /* libz.dylib */; };
+		66494B0516E108640042C942 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494B0316E108640042C942 /* libxml2.2.dylib */; };
+		66494B0616E108640042C942 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494B0416E108640042C942 /* libxml2.dylib */; };
+		66494B1B16E10A1A0042C942 /* libPayPalMPL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494B1016E10A1A0042C942 /* libPayPalMPL.a */; };
+		66494B1F16E10B0A0042C942 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494B1E16E10B0A0042C942 /* icon.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		66494A5616E106740042C942 /* CinemaCenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinemaCenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		66494A5916E106740042C942 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		66494A5B16E106740042C942 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		66494A5D16E106740042C942 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		66494A6116E106740042C942 /* CinemaCenter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CinemaCenter-Info.plist"; sourceTree = "<group>"; };
+		66494A6316E106740042C942 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		66494A6516E106740042C942 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		66494A6716E106740042C942 /* CinemaCenter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CinemaCenter-Prefix.pch"; sourceTree = "<group>"; };
+		66494A8116E107690042C942 /* NDSAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSAppDelegate.h; sourceTree = "<group>"; };
+		66494A8216E107690042C942 /* NDSAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSAppDelegate.m; sourceTree = "<group>"; };
+		66494A8416E107740042C942 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		66494A8616E107870042C942 /* Core_Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Core_Data.xcdatamodel; sourceTree = "<group>"; };
+		66494A8716E107870042C942 /* NDSMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSMapAnnotation.h; sourceTree = "<group>"; };
+		66494A8816E107870042C942 /* NDSMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSMapAnnotation.m; sourceTree = "<group>"; };
+		66494A8916E107870042C942 /* NDSReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSReceipt.h; sourceTree = "<group>"; };
+		66494A8A16E107870042C942 /* NDSReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSReceipt.m; sourceTree = "<group>"; };
+		66494A8E16E1079E0042C942 /* NDSScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSScheduleViewController.h; sourceTree = "<group>"; };
+		66494A8F16E1079E0042C942 /* NDSScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSScheduleViewController.m; sourceTree = "<group>"; };
+		66494A9016E1079E0042C942 /* NDSMovieTicketsDatesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSMovieTicketsDatesViewController.h; sourceTree = "<group>"; };
+		66494A9116E1079E0042C942 /* NDSMovieTicketsDatesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSMovieTicketsDatesViewController.m; sourceTree = "<group>"; };
+		66494A9216E1079E0042C942 /* NDSMovieTicketsShowtimesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSMovieTicketsShowtimesViewController.h; sourceTree = "<group>"; };
+		66494A9316E1079E0042C942 /* NDSMovieTicketsShowtimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSMovieTicketsShowtimesViewController.m; sourceTree = "<group>"; };
+		66494A9416E1079E0042C942 /* NDSMovieTicketsCheckoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSMovieTicketsCheckoutViewController.h; sourceTree = "<group>"; };
+		66494A9516E1079E0042C942 /* NDSMovieTicketsCheckoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSMovieTicketsCheckoutViewController.m; sourceTree = "<group>"; };
+		66494A9616E1079E0042C942 /* NDSMoviePostersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSMoviePostersViewController.h; sourceTree = "<group>"; };
+		66494A9716E1079E0042C942 /* NDSMoviePostersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSMoviePostersViewController.m; sourceTree = "<group>"; };
+		66494A9816E1079E0042C942 /* NDSMovieDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSMovieDescriptionViewController.h; sourceTree = "<group>"; };
+		66494A9916E1079E0042C942 /* NDSMovieDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSMovieDescriptionViewController.m; sourceTree = "<group>"; };
+		66494A9A16E1079E0042C942 /* NDSInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSInformationViewController.h; sourceTree = "<group>"; };
+		66494A9B16E1079E0042C942 /* NDSInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSInformationViewController.m; sourceTree = "<group>"; };
+		66494A9C16E1079E0042C942 /* NDSMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSMapViewController.h; sourceTree = "<group>"; };
+		66494A9D16E1079E0042C942 /* NDSMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSMapViewController.m; sourceTree = "<group>"; };
+		66494A9E16E1079E0042C942 /* NDSMembershipsCheckoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSMembershipsCheckoutViewController.h; sourceTree = "<group>"; };
+		66494A9F16E1079E0042C942 /* NDSMembershipsCheckoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSMembershipsCheckoutViewController.m; sourceTree = "<group>"; };
+		66494AA016E1079E0042C942 /* NDSMembershipsDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSMembershipsDetailsViewController.h; sourceTree = "<group>"; };
+		66494AA116E1079E0042C942 /* NDSMembershipsDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSMembershipsDetailsViewController.m; sourceTree = "<group>"; };
+		66494AA216E1079E0042C942 /* NDSReceiptsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSReceiptsViewController.h; sourceTree = "<group>"; };
+		66494AA316E1079E0042C942 /* NDSReceiptsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSReceiptsViewController.m; sourceTree = "<group>"; };
+		66494AA416E1079E0042C942 /* NDSReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSReceiptViewController.h; sourceTree = "<group>"; };
+		66494AA516E1079E0042C942 /* NDSReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSReceiptViewController.m; sourceTree = "<group>"; };
+		66494AB316E107B40042C942 /* NDSScheduleFilmCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSScheduleFilmCell.h; sourceTree = "<group>"; };
+		66494AB416E107B40042C942 /* NDSScheduleFilmCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSScheduleFilmCell.m; sourceTree = "<group>"; };
+		66494AB516E107B40042C942 /* NDSLoadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSLoadCell.h; sourceTree = "<group>"; };
+		66494AB616E107B40042C942 /* NDSLoadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSLoadCell.m; sourceTree = "<group>"; };
+		66494AB716E107B40042C942 /* NDSErrorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSErrorCell.h; sourceTree = "<group>"; };
+		66494AB816E107B40042C942 /* NDSErrorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSErrorCell.m; sourceTree = "<group>"; };
+		66494AB916E107B40042C942 /* NDSMoviePosterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSMoviePosterCell.h; sourceTree = "<group>"; };
+		66494ABA16E107B40042C942 /* NDSMoviePosterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSMoviePosterCell.m; sourceTree = "<group>"; };
+		66494ABB16E107B40042C942 /* NDSShowtimeInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSShowtimeInfoCell.h; sourceTree = "<group>"; };
+		66494ABC16E107B40042C942 /* NDSShowtimeInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSShowtimeInfoCell.m; sourceTree = "<group>"; };
+		66494ABD16E107B40042C942 /* NDSTicketTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSTicketTypeCell.h; sourceTree = "<group>"; };
+		66494ABE16E107B40042C942 /* NDSTicketTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSTicketTypeCell.m; sourceTree = "<group>"; };
+		66494ABF16E107B40042C942 /* NDSMembershipDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSMembershipDetailCell.h; sourceTree = "<group>"; };
+		66494AC016E107B40042C942 /* NDSMembershipDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSMembershipDetailCell.m; sourceTree = "<group>"; };
+		66494AC116E107B40042C942 /* NDSSubtotalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSSubtotalCell.h; sourceTree = "<group>"; };
+		66494AC216E107B40042C942 /* NDSSubtotalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSSubtotalCell.m; sourceTree = "<group>"; };
+		66494AC316E107B40042C942 /* NDSReceiptCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSReceiptCell.h; sourceTree = "<group>"; };
+		66494AC416E107B40042C942 /* NDSReceiptCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSReceiptCell.m; sourceTree = "<group>"; };
+		66494AC516E107B40042C942 /* NDSProofOfPurchaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSProofOfPurchaseCell.h; sourceTree = "<group>"; };
+		66494AC616E107B40042C942 /* NDSProofOfPurchaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSProofOfPurchaseCell.m; sourceTree = "<group>"; };
+		66494AD116E107CA0042C942 /* icon_transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_transparent.png; sourceTree = "<group>"; };
+		66494AD216E107CA0042C942 /* mappin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mappin.png; sourceTree = "<group>"; };
+		66494AD316E107CA0042C942 /* jacket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jacket.png; sourceTree = "<group>"; };
+		66494AD416E107CA0042C942 /* receipt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = receipt.png; sourceTree = "<group>"; };
+		66494AD616E107CA0042C942 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		66494AD716E107CA0042C942 /* film_cell_writing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = film_cell_writing.png; sourceTree = "<group>"; };
+		66494AD816E107CA0042C942 /* ticket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ticket.png; sourceTree = "<group>"; };
+		66494AD916E107CA0042C942 /* ellipsis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ellipsis.png; sourceTree = "<group>"; };
+		66494ADA16E107CA0042C942 /* spotlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spotlight.png; sourceTree = "<group>"; };
+		66494ADB16E107CA0042C942 /* projector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projector.png; sourceTree = "<group>"; };
+		66494ADC16E107CA0042C942 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		66494ADD16E107CA0042C942 /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
+		66494ADE16E107CA0042C942 /* film_cell_transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = film_cell_transparent.png; sourceTree = "<group>"; };
+		66494ADF16E107CA0042C942 /* film_cell_cut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = film_cell_cut.png; sourceTree = "<group>"; };
+		66494AEF16E107ED0042C942 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		66494AF016E107ED0042C942 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		66494AF116E107ED0042C942 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		66494AF516E108230042C942 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		66494AF716E108290042C942 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		66494AF916E108440042C942 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		66494AFB16E108570042C942 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		66494AFC16E108570042C942 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		66494AFD16E108570042C942 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = usr/lib/libz.1.dylib; sourceTree = SDKROOT; };
+		66494AFE16E108570042C942 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		66494B0316E108640042C942 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		66494B0416E108640042C942 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		66494B1016E10A1A0042C942 /* libPayPalMPL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPayPalMPL.a; sourceTree = "<group>"; };
+		66494B1116E10A1A0042C942 /* PayPal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPal.h; sourceTree = "<group>"; };
+		66494B1216E10A1A0042C942 /* PayPalAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalAddress.h; sourceTree = "<group>"; };
+		66494B1316E10A1A0042C942 /* PayPalAdvancedPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalAdvancedPayment.h; sourceTree = "<group>"; };
+		66494B1416E10A1A0042C942 /* PayPalAmounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalAmounts.h; sourceTree = "<group>"; };
+		66494B1516E10A1A0042C942 /* PayPalInvoiceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalInvoiceData.h; sourceTree = "<group>"; };
+		66494B1616E10A1A0042C942 /* PayPalInvoiceItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalInvoiceItem.h; sourceTree = "<group>"; };
+		66494B1716E10A1A0042C942 /* PayPalPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPayment.h; sourceTree = "<group>"; };
+		66494B1816E10A1A0042C942 /* PayPalPreapprovalDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPreapprovalDetails.h; sourceTree = "<group>"; };
+		66494B1916E10A1A0042C942 /* PayPalReceiverAmounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalReceiverAmounts.h; sourceTree = "<group>"; };
+		66494B1A16E10A1A0042C942 /* PayPalReceiverPaymentDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalReceiverPaymentDetails.h; sourceTree = "<group>"; };
+		66494B1E16E10B0A0042C942 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		66494A5316E106740042C942 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66494B0516E108640042C942 /* libxml2.2.dylib in Frameworks */,
+				66494B0616E108640042C942 /* libxml2.dylib in Frameworks */,
+				66494AFF16E108570042C942 /* libz.1.1.3.dylib in Frameworks */,
+				66494B0016E108570042C942 /* libz.1.2.5.dylib in Frameworks */,
+				66494B0116E108570042C942 /* libz.1.dylib in Frameworks */,
+				66494B0216E108570042C942 /* libz.dylib in Frameworks */,
+				66494AFA16E108440042C942 /* CoreData.framework in Frameworks */,
+				66494AF816E108290042C942 /* Security.framework in Frameworks */,
+				66494AF616E108230042C942 /* MapKit.framework in Frameworks */,
+				66494A5A16E106740042C942 /* UIKit.framework in Frameworks */,
+				66494A5C16E106740042C942 /* Foundation.framework in Frameworks */,
+				66494A5E16E106740042C942 /* CoreGraphics.framework in Frameworks */,
+				66494B1B16E10A1A0042C942 /* libPayPalMPL.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		66494A4D16E106740042C942 = {
+			isa = PBXGroup;
+			children = (
+				66494A5F16E106740042C942 /* CinemaCenter */,
+				66494A5816E106740042C942 /* Frameworks */,
+				66494A5716E106740042C942 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		66494A5716E106740042C942 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				66494A5616E106740042C942 /* CinemaCenter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		66494A5816E106740042C942 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				66494B0316E108640042C942 /* libxml2.2.dylib */,
+				66494B0416E108640042C942 /* libxml2.dylib */,
+				66494AFB16E108570042C942 /* libz.1.1.3.dylib */,
+				66494AFC16E108570042C942 /* libz.1.2.5.dylib */,
+				66494AFD16E108570042C942 /* libz.1.dylib */,
+				66494AFE16E108570042C942 /* libz.dylib */,
+				66494AF916E108440042C942 /* CoreData.framework */,
+				66494AF716E108290042C942 /* Security.framework */,
+				66494AF516E108230042C942 /* MapKit.framework */,
+				66494A5916E106740042C942 /* UIKit.framework */,
+				66494A5B16E106740042C942 /* Foundation.framework */,
+				66494A5D16E106740042C942 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		66494A5F16E106740042C942 /* CinemaCenter */ = {
+			isa = PBXGroup;
+			children = (
+				66494A7C16E107050042C942 /* Delegate */,
+				66494A7D16E107110042C942 /* Views */,
+				66494A7E16E1071A0042C942 /* Model */,
+				66494A7F16E107200042C942 /* Controllers */,
+				66494A8016E107420042C942 /* Resources */,
+				66494A6016E106740042C942 /* Supporting Files */,
+				66494B0F16E109CE0042C942 /* PayPal API */,
+			);
+			path = CinemaCenter;
+			sourceTree = "<group>";
+		};
+		66494A6016E106740042C942 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				66494A6116E106740042C942 /* CinemaCenter-Info.plist */,
+				66494A6216E106740042C942 /* InfoPlist.strings */,
+				66494A6516E106740042C942 /* main.m */,
+				66494A6716E106740042C942 /* CinemaCenter-Prefix.pch */,
+				66494B1E16E10B0A0042C942 /* icon.png */,
+				66494AD616E107CA0042C942 /* icon@2x.png */,
+				66494AEF16E107ED0042C942 /* Default-568h@2x.png */,
+				66494AF016E107ED0042C942 /* Default.png */,
+				66494AF116E107ED0042C942 /* Default@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		66494A7C16E107050042C942 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				66494A8116E107690042C942 /* NDSAppDelegate.h */,
+				66494A8216E107690042C942 /* NDSAppDelegate.m */,
+			);
+			name = Delegate;
+			sourceTree = "<group>";
+		};
+		66494A7D16E107110042C942 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66494A8416E107740042C942 /* MainStoryboard.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		66494A7E16E1071A0042C942 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				66494A8616E107870042C942 /* Core_Data.xcdatamodel */,
+				66494A8716E107870042C942 /* NDSMapAnnotation.h */,
+				66494A8816E107870042C942 /* NDSMapAnnotation.m */,
+				66494A8916E107870042C942 /* NDSReceipt.h */,
+				66494A8A16E107870042C942 /* NDSReceipt.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		66494A7F16E107200042C942 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				66494A8E16E1079E0042C942 /* NDSScheduleViewController.h */,
+				66494A8F16E1079E0042C942 /* NDSScheduleViewController.m */,
+				66494A9016E1079E0042C942 /* NDSMovieTicketsDatesViewController.h */,
+				66494A9116E1079E0042C942 /* NDSMovieTicketsDatesViewController.m */,
+				66494A9216E1079E0042C942 /* NDSMovieTicketsShowtimesViewController.h */,
+				66494A9316E1079E0042C942 /* NDSMovieTicketsShowtimesViewController.m */,
+				66494A9416E1079E0042C942 /* NDSMovieTicketsCheckoutViewController.h */,
+				66494A9516E1079E0042C942 /* NDSMovieTicketsCheckoutViewController.m */,
+				66494A9616E1079E0042C942 /* NDSMoviePostersViewController.h */,
+				66494A9716E1079E0042C942 /* NDSMoviePostersViewController.m */,
+				66494A9816E1079E0042C942 /* NDSMovieDescriptionViewController.h */,
+				66494A9916E1079E0042C942 /* NDSMovieDescriptionViewController.m */,
+				66494A9A16E1079E0042C942 /* NDSInformationViewController.h */,
+				66494A9B16E1079E0042C942 /* NDSInformationViewController.m */,
+				66494A9C16E1079E0042C942 /* NDSMapViewController.h */,
+				66494A9D16E1079E0042C942 /* NDSMapViewController.m */,
+				66494A9E16E1079E0042C942 /* NDSMembershipsCheckoutViewController.h */,
+				66494A9F16E1079E0042C942 /* NDSMembershipsCheckoutViewController.m */,
+				66494AA016E1079E0042C942 /* NDSMembershipsDetailsViewController.h */,
+				66494AA116E1079E0042C942 /* NDSMembershipsDetailsViewController.m */,
+				66494AA216E1079E0042C942 /* NDSReceiptsViewController.h */,
+				66494AA316E1079E0042C942 /* NDSReceiptsViewController.m */,
+				66494AA416E1079E0042C942 /* NDSReceiptViewController.h */,
+				66494AA516E1079E0042C942 /* NDSReceiptViewController.m */,
+				66494AB216E107A20042C942 /* Cells */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		66494A8016E107420042C942 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				66494AD116E107CA0042C942 /* icon_transparent.png */,
+				66494AD216E107CA0042C942 /* mappin.png */,
+				66494AD316E107CA0042C942 /* jacket.png */,
+				66494AD416E107CA0042C942 /* receipt.png */,
+				66494AD716E107CA0042C942 /* film_cell_writing.png */,
+				66494AD816E107CA0042C942 /* ticket.png */,
+				66494AD916E107CA0042C942 /* ellipsis.png */,
+				66494ADA16E107CA0042C942 /* spotlight.png */,
+				66494ADB16E107CA0042C942 /* projector.png */,
+				66494ADC16E107CA0042C942 /* background.png */,
+				66494ADD16E107CA0042C942 /* banner.png */,
+				66494ADE16E107CA0042C942 /* film_cell_transparent.png */,
+				66494ADF16E107CA0042C942 /* film_cell_cut.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		66494AB216E107A20042C942 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				66494AB316E107B40042C942 /* NDSScheduleFilmCell.h */,
+				66494AB416E107B40042C942 /* NDSScheduleFilmCell.m */,
+				66494AB516E107B40042C942 /* NDSLoadCell.h */,
+				66494AB616E107B40042C942 /* NDSLoadCell.m */,
+				66494AB716E107B40042C942 /* NDSErrorCell.h */,
+				66494AB816E107B40042C942 /* NDSErrorCell.m */,
+				66494AB916E107B40042C942 /* NDSMoviePosterCell.h */,
+				66494ABA16E107B40042C942 /* NDSMoviePosterCell.m */,
+				66494ABB16E107B40042C942 /* NDSShowtimeInfoCell.h */,
+				66494ABC16E107B40042C942 /* NDSShowtimeInfoCell.m */,
+				66494ABD16E107B40042C942 /* NDSTicketTypeCell.h */,
+				66494ABE16E107B40042C942 /* NDSTicketTypeCell.m */,
+				66494ABF16E107B40042C942 /* NDSMembershipDetailCell.h */,
+				66494AC016E107B40042C942 /* NDSMembershipDetailCell.m */,
+				66494AC116E107B40042C942 /* NDSSubtotalCell.h */,
+				66494AC216E107B40042C942 /* NDSSubtotalCell.m */,
+				66494AC316E107B40042C942 /* NDSReceiptCell.h */,
+				66494AC416E107B40042C942 /* NDSReceiptCell.m */,
+				66494AC516E107B40042C942 /* NDSProofOfPurchaseCell.h */,
+				66494AC616E107B40042C942 /* NDSProofOfPurchaseCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		66494B0F16E109CE0042C942 /* PayPal API */ = {
+			isa = PBXGroup;
+			children = (
+				66494B1016E10A1A0042C942 /* libPayPalMPL.a */,
+				66494B1116E10A1A0042C942 /* PayPal.h */,
+				66494B1216E10A1A0042C942 /* PayPalAddress.h */,
+				66494B1316E10A1A0042C942 /* PayPalAdvancedPayment.h */,
+				66494B1416E10A1A0042C942 /* PayPalAmounts.h */,
+				66494B1516E10A1A0042C942 /* PayPalInvoiceData.h */,
+				66494B1616E10A1A0042C942 /* PayPalInvoiceItem.h */,
+				66494B1716E10A1A0042C942 /* PayPalPayment.h */,
+				66494B1816E10A1A0042C942 /* PayPalPreapprovalDetails.h */,
+				66494B1916E10A1A0042C942 /* PayPalReceiverAmounts.h */,
+				66494B1A16E10A1A0042C942 /* PayPalReceiverPaymentDetails.h */,
+			);
+			name = "PayPal API";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		66494A5516E106740042C942 /* CinemaCenter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66494A7916E106740042C942 /* Build configuration list for PBXNativeTarget "CinemaCenter" */;
+			buildPhases = (
+				66494A5216E106740042C942 /* Sources */,
+				66494A5316E106740042C942 /* Frameworks */,
+				66494A5416E106740042C942 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CinemaCenter;
+			productName = CinemaCenter;
+			productReference = 66494A5616E106740042C942 /* CinemaCenter.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		66494A4E16E106740042C942 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = NDS;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Nathan Spielman";
+			};
+			buildConfigurationList = 66494A5116E106740042C942 /* Build configuration list for PBXProject "CinemaCenter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 66494A4D16E106740042C942;
+			productRefGroup = 66494A5716E106740042C942 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				66494A5516E106740042C942 /* CinemaCenter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		66494A5416E106740042C942 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66494A6416E106740042C942 /* InfoPlist.strings in Resources */,
+				66494A8516E107740042C942 /* MainStoryboard.storyboard in Resources */,
+				66494AE016E107CA0042C942 /* icon_transparent.png in Resources */,
+				66494AE116E107CA0042C942 /* mappin.png in Resources */,
+				66494AE216E107CA0042C942 /* jacket.png in Resources */,
+				66494AE316E107CA0042C942 /* receipt.png in Resources */,
+				66494AE516E107CA0042C942 /* icon@2x.png in Resources */,
+				66494AE616E107CA0042C942 /* film_cell_writing.png in Resources */,
+				66494AE716E107CA0042C942 /* ticket.png in Resources */,
+				66494AE816E107CA0042C942 /* ellipsis.png in Resources */,
+				66494AE916E107CA0042C942 /* spotlight.png in Resources */,
+				66494AEA16E107CA0042C942 /* projector.png in Resources */,
+				66494AEB16E107CA0042C942 /* background.png in Resources */,
+				66494AEC16E107CA0042C942 /* banner.png in Resources */,
+				66494AED16E107CA0042C942 /* film_cell_transparent.png in Resources */,
+				66494AEE16E107CA0042C942 /* film_cell_cut.png in Resources */,
+				66494AF216E107ED0042C942 /* Default-568h@2x.png in Resources */,
+				66494AF316E107ED0042C942 /* Default.png in Resources */,
+				66494AF416E107ED0042C942 /* Default@2x.png in Resources */,
+				66494B1F16E10B0A0042C942 /* icon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		66494A5216E106740042C942 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66494A6616E106740042C942 /* main.m in Sources */,
+				66494A8316E107690042C942 /* NDSAppDelegate.m in Sources */,
+				66494A8B16E107870042C942 /* Core_Data.xcdatamodel in Sources */,
+				66494A8C16E107870042C942 /* NDSMapAnnotation.m in Sources */,
+				66494A8D16E107870042C942 /* NDSReceipt.m in Sources */,
+				66494AA616E1079E0042C942 /* NDSScheduleViewController.m in Sources */,
+				66494AA716E1079E0042C942 /* NDSMovieTicketsDatesViewController.m in Sources */,
+				66494AA816E1079E0042C942 /* NDSMovieTicketsShowtimesViewController.m in Sources */,
+				66494AA916E1079E0042C942 /* NDSMovieTicketsCheckoutViewController.m in Sources */,
+				66494AAA16E1079E0042C942 /* NDSMoviePostersViewController.m in Sources */,
+				66494AAB16E1079E0042C942 /* NDSMovieDescriptionViewController.m in Sources */,
+				66494AAC16E1079E0042C942 /* NDSInformationViewController.m in Sources */,
+				66494AAD16E1079E0042C942 /* NDSMapViewController.m in Sources */,
+				66494AAE16E1079E0042C942 /* NDSMembershipsCheckoutViewController.m in Sources */,
+				66494AAF16E1079E0042C942 /* NDSMembershipsDetailsViewController.m in Sources */,
+				66494AB016E1079E0042C942 /* NDSReceiptsViewController.m in Sources */,
+				66494AB116E1079E0042C942 /* NDSReceiptViewController.m in Sources */,
+				66494AC716E107B40042C942 /* NDSScheduleFilmCell.m in Sources */,
+				66494AC816E107B40042C942 /* NDSLoadCell.m in Sources */,
+				66494AC916E107B40042C942 /* NDSErrorCell.m in Sources */,
+				66494ACA16E107B40042C942 /* NDSMoviePosterCell.m in Sources */,
+				66494ACB16E107B40042C942 /* NDSShowtimeInfoCell.m in Sources */,
+				66494ACC16E107B40042C942 /* NDSTicketTypeCell.m in Sources */,
+				66494ACD16E107B40042C942 /* NDSMembershipDetailCell.m in Sources */,
+				66494ACE16E107B40042C942 /* NDSSubtotalCell.m in Sources */,
+				66494ACF16E107B40042C942 /* NDSReceiptCell.m in Sources */,
+				66494AD016E107B40042C942 /* NDSProofOfPurchaseCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		66494A6216E106740042C942 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66494A6316E106740042C942 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		66494A7716E106740042C942 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		66494A7816E106740042C942 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		66494A7A16E106740042C942 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CinemaCenter/CinemaCenter-Prefix.pch";
+				INFOPLIST_FILE = "CinemaCenter/CinemaCenter-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/CinemaCenter\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		66494A7B16E106740042C942 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CinemaCenter/CinemaCenter-Prefix.pch";
+				INFOPLIST_FILE = "CinemaCenter/CinemaCenter-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/CinemaCenter\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		66494A5116E106740042C942 /* Build configuration list for PBXProject "CinemaCenter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66494A7716E106740042C942 /* Debug */,
+				66494A7816E106740042C942 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66494A7916E106740042C942 /* Build configuration list for PBXNativeTarget "CinemaCenter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66494A7A16E106740042C942 /* Debug */,
+				66494A7B16E106740042C942 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 66494A4E16E106740042C942 /* Project object */;
+}
