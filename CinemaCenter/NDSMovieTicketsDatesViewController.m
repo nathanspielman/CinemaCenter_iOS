@@ -21,7 +21,6 @@
 @property (nonatomic) BOOL loading;
 @property (strong, nonatomic) NSMutableDictionary *dictionaryOfDatesText;
 @property (strong, nonatomic) NSMutableDictionary *dictionaryOfShowtimesText;
-@property (nonatomic, assign) int passes;
 @property (nonatomic, assign) int daysRemoved;
 @property (strong,nonatomic) NSArray *htmlOriginalSymbolArray;
 @property (strong,nonatomic) NSArray *htmlReplacedSymbolArray;
@@ -39,20 +38,20 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:[UIApplication sharedApplication]];
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:[UIApplication sharedApplication]];
-    
     self.htmlOriginalSymbolArray = ((NDSAppDelegate *)[[UIApplication sharedApplication]delegate]).htmlOriginalSymbolArray;
     self.htmlReplacedSymbolArray = ((NDSAppDelegate *)[[UIApplication sharedApplication]delegate]).htmlReplacedSymbolArray;
-        
-    self.passes = 0;
     
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshView)];
+    
+    self.navigationItem.rightBarButtonItem = refreshButton;
+            
     self.loading = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     
-    if (self.passes == 0 || self.pageLoadError) {
+    if (self.pageLoadError || self.loading) {
         
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             
@@ -60,19 +59,11 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
+                self.loading = NO;
+                                
                 [self.tableView reloadData];
-                
             });
-            
         });
-        
-        //self.pageLoadError = [self parseWebsiteText];
-        
-        self.loading = NO;
-        
-        //[self.tableView reloadData];
-        
-        self.passes++;
     }
 }
 
@@ -93,21 +84,21 @@
     self.pageLoadError = [self parseWebsiteText];
     
     [self.tableView reloadData];
-    
-    //self.loading = YES;
-    
-    //self.passes = 0;
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)refreshView
+{
+    self.loading = YES;
+        
+    [self viewWillAppear:NO];
+    
+    [self viewDidAppear:NO];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -400,6 +391,21 @@
     }
     
     return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    int row = [indexPath row];
+    
+    if (self.loading) {
+        return 398.0;
+    }
+    
+    if (self.pageLoadError && row == 0) {
+        return 131.0;
+    }
+    
+    return 44.0;
 }
 
 @end

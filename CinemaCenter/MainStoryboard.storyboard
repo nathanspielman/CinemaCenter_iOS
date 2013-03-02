@@ -1903,7 +1903,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PayPalButtonCell" rowHeight="69" id="T8d-PB-S91">
-                                        <rect key="frame" x="0.0" y="412" width="320" height="70"/>
+                                        <rect key="frame" x="0.0" y="412" width="320" height="69"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="68"/>
@@ -1953,6 +1953,157 @@
         <image name="spotlight.png" width="30" height="30"/>
         <image name="ticket.png" width="40" height="25"/>
     </resources>
+    <classes>
+        <class className="NDSErrorCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSErrorCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="NDSInformationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSInformationViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="NDSLoadCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSLoadCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="NDSMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSMapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="NDSMembershipDetailCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSMembershipDetailCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="membershipDetailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="membershipTypeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NDSMembershipsCheckoutViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSMembershipsCheckoutViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="subtotalTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="NDSMembershipsDetailsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSMembershipsDetailsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="NDSMovieDescriptionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSMovieDescriptionViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="movieDescriptionTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="movieLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NDSMoviePosterCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSMoviePosterCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="moviePoster" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="NDSMoviePostersViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSMoviePostersViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="NDSMovieTicketsCheckoutViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSMovieTicketsCheckoutViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="subtotalTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="NDSMovieTicketsDatesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSMovieTicketsDatesViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="NDSMovieTicketsShowtimesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSMovieTicketsShowtimesViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="NDSProofOfPurchaseCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSProofOfPurchaseCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="currentTimeTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="purchaseDateTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NDSReceiptCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSReceiptCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="showtimeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="subtotalLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NDSReceiptViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSReceiptViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="NDSReceiptsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSReceiptsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="NDSScheduleFilmCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSScheduleFilmCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scheduleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="showtimesTextView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="NDSScheduleViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSScheduleViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="NDSShowtimeInfoCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSShowtimeInfoCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="showtimeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NDSSubtotalCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSSubtotalCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="subtotalTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NDSTicketTypeCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSTicketTypeCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="ticketPriceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ticketQuantityTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="ticketTotalTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="ticketTypeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
