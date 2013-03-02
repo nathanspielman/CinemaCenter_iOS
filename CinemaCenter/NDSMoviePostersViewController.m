@@ -21,7 +21,6 @@
 @property (strong,nonatomic) NSArray *htmlReplacedSymbolArray;
 @property (assign, nonatomic) NSInteger pageLoadError;
 @property (nonatomic) BOOL loading;
-@property (nonatomic) int passes;
 
 @end
 
@@ -39,17 +38,17 @@
     self.htmlOriginalSymbolArray = ((NDSAppDelegate *)[[UIApplication sharedApplication]delegate]).htmlOriginalSymbolArray;
     self.htmlReplacedSymbolArray = ((NDSAppDelegate *)[[UIApplication sharedApplication]delegate]).htmlReplacedSymbolArray;
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:[UIApplication sharedApplication]];
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshView)];
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:[UIApplication sharedApplication]];
+    self.navigationItem.rightBarButtonItem = refreshButton;
     
-    self.loading = YES;   
+    self.loading = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     
-    if (self.passes == 0 || self.pageLoadError) {
+    if (self.pageLoadError || self.loading) {
         
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             
@@ -57,26 +56,12 @@
 
             dispatch_async(dispatch_get_main_queue(), ^{
                 
+                self.loading = NO;
+                                
                 [self.tableView reloadData];
-                
             });
-            
         });
-           
-        //self.pageLoadError = [self parseWebsiteText];
-        
-        self.loading = NO;
-        
-        //[self.tableView reloadData];
-        
-        self.passes++;
     }
-    
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -93,32 +78,19 @@
     }
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    //self.loading = YES;
-    
-    //self.pageLoadError = NO;
-    
-    //self.passes = 0;
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    /*self.loading = YES;
-    
-    self.pageLoadError = NO;
-    
-    self.passes = 0;
-    
-    self.loading = YES;
-    
-    [self.tableView reloadData];*/
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)refreshView
+{
+    self.loading = YES;
+        
+    [self viewWillAppear:NO];
+    
+    [self viewDidAppear:NO];
 }
 
 #pragma mark - Table view data source
@@ -451,6 +423,21 @@
     }
     
     return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{    
+    int row = [indexPath row];
+    
+    if (self.loading) {
+        return 398.0;
+    }
+    
+    if (self.pageLoadError && row == 0) {
+        return 131.0;
+    }
+    
+    return 398.0;
 }
 
 @end

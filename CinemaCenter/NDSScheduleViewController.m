@@ -35,10 +35,10 @@
             
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:[UIApplication sharedApplication]];
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:[UIApplication sharedApplication]];
-    
     self.htmlOriginalSymbolArray = ((NDSAppDelegate *)[[UIApplication sharedApplication]delegate]).htmlOriginalSymbolArray;
     self.htmlReplacedSymbolArray = ((NDSAppDelegate *)[[UIApplication sharedApplication]delegate]).htmlReplacedSymbolArray;
+    
+    self.loading = YES;
     
     /*[NSTimer scheduledTimerWithTimeInterval:1.0
                                      target:self.tableView
@@ -48,58 +48,21 @@
     
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    
-    /*if (self.loading || self.pageLoadError) {
-        
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            
-            self.pageLoadError = [self parseWebsiteText];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                [self.tableView reloadData];
-                
-            });
-            
-        });
-        
-        //self.pageLoadError = [self parseWebsiteText];
-        
-        self.loading = NO;
-        
-        //[self.tableView reloadData];
-        
-    }*/
-    
-}
-
 - (void)viewWillAppear:(BOOL)animated
-{
-    if (self.pageLoadError) {
-        
-        //self.pageLoadError = [self parseWebsiteText];
-        
-        self.loading = YES;
-        
-        [self.tableView reloadData];
-        
-        self.pageLoadError = NO;
-        
+{    
+    if (self.pageLoadError || self.loading) {
+                
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             
             self.pageLoadError = [self parseWebsiteText];
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                
-                [self.tableView reloadData];
                 
                 self.loading = NO;
+                
+                [self.tableView reloadData];
             });
-            
         });
-        
     }
 }
 
@@ -110,18 +73,13 @@
     [self.tableView reloadData];    
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
--(void)startSpinningImageView:(UIImageView *)imageView
+/*-(void)startSpinningImageView:(UIImageView *)imageView
 {
     self.degrees = 0;
     self.continueSpinning = true;
@@ -146,7 +104,7 @@
 -(void)stopSpinningImageView:(UIImageView *)imageView
 {
     self.continueSpinning = false;
-}
+}*/
 
 #pragma mark -
 #pragma mark Table Data Source Methods
