@@ -7,8 +7,8 @@
 //
 
 #import "NDSScheduleViewController.h"
-#import "NDSScheduleFilmCell.h"
 #import "NDSAppDelegate.h"
+#import "NDSXMLParser.h"
 
 @interface NDSScheduleViewController ()
 
@@ -38,14 +38,7 @@
     self.htmlOriginalSymbolArray = ((NDSAppDelegate *)[[UIApplication sharedApplication]delegate]).htmlOriginalSymbolArray;
     self.htmlReplacedSymbolArray = ((NDSAppDelegate *)[[UIApplication sharedApplication]delegate]).htmlReplacedSymbolArray;
     
-    self.loading = YES;
-    
-    /*[NSTimer scheduledTimerWithTimeInterval:1.0
-                                     target:self.tableView
-                                   selector:@selector(reloadData)
-                                   userInfo:nil
-                                    repeats:YES];*/
-    
+    self.loading = YES;    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -79,33 +72,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*-(void)startSpinningImageView:(UIImageView *)imageView
-{
-    self.degrees = 0;
-    self.continueSpinning = true;
-    [self continueSpinningImageView:imageView];
-}
-
--(void)continueSpinningImageView:(UIImageView *)imageView
-{
-    self.degrees = (self.degrees + 1) % 360;
-    
-    CGAffineTransform rotate = CGAffineTransformMakeRotation( self.degrees / 180.0 * 3.14 );
-    [imageView setTransform:rotate];
-    
-    [self.tableView reloadData];
-    
-    if(!self.continueSpinning)
-        return;
-    else
-        [self performSelector:@selector(continueSpinning) withObject:nil afterDelay:0.1f];
-}
-
--(void)stopSpinningImageView:(UIImageView *)imageView
-{
-    self.continueSpinning = false;
-}*/
-
 #pragma mark -
 #pragma mark Table Data Source Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -129,49 +95,50 @@
 {
     NSString *CellTableIdentifier = nil;
         
-    int row = [indexPath row];
+    UITableViewCell *cell = nil;
     
-    if (row == 0) {
+    if (indexPath.row == 0) {
         
         CellTableIdentifier = @"CinemaCenterFilmCell";
         
-        NDSScheduleFilmCell *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+        cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+        
+        UILabel *scheduleLabel = (UILabel *)[cell viewWithTag:6];
         
         if (self.loading) {
-            cell.scheduleLabel.text = @"";
+            scheduleLabel.text = @"";
         }
         else{
-            cell.scheduleLabel.text = @"Movie Schedule";
+            scheduleLabel.text = @"Movie Schedule";
         }
-        
-        /*self.degrees = (self.degrees + 1) % 360;
-        
-        CGAffineTransform rotate = CGAffineTransformMakeRotation( self.degrees / 180.0 * 3.14 );
-        [cell.iconImageView setTransform:rotate];*/
                 
         return cell;
     }
     
-    if (self.pageLoadError && row == 2){
+    if (self.pageLoadError && indexPath.row == 2){
         
         CellTableIdentifier = @"CutFilmCell";
         
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+        cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
         
         return cell;
     }
     
     CellTableIdentifier = @"ScheduleFilmCell";
     
-    NDSScheduleFilmCell *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     
-    NSString *dayKey = [[NSString alloc]initWithFormat:@"day%d", row+self.daysRemoved];
+    UILabel *dateLabel = (UILabel *)[cell viewWithTag:7];
+    
+    UITextView *showtimesTextView = (UITextView *)[cell viewWithTag:8];
+    
+    NSString *dayKey = [[NSString alloc]initWithFormat:@"day%d", indexPath.row+self.daysRemoved];
     
     NSString *dayText = [self.dictionaryOfDaysText objectForKey:dayKey];
     
     if (self.pageLoadError) {
         
-        cell.dateLabel.text = @"Something went wrong...";
+        dateLabel.text = @"Something went wrong...";
         
         NSString *errorMessage;
         
@@ -184,7 +151,7 @@
             errorMessage = @"The application had trouble retrieving schedule data from Cinema Center's website, this is error is our fault. Please check back soon after we solve the problem";
         }
                         
-        cell.showtimesTextView.text = errorMessage;
+        showtimesTextView.text = errorMessage;
         
         return cell;
     }
@@ -195,9 +162,9 @@
         
     NSString *showtimesText = [dayText substringFromIndex:range.location+1];
     
-    cell.dateLabel.text = dateText;
+    dateLabel.text = dateText;
     
-    cell.showtimesTextView.text = showtimesText;
+    showtimesTextView.text = showtimesText;
         
     return cell;
 }
@@ -375,7 +342,7 @@
     }
     
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"MMMM dd"];
+    [format setDateFormat:@"MMMM d"];
     NSDate *now = [[NSDate alloc] init];
     NSString *today = [format stringFromDate:now];
     

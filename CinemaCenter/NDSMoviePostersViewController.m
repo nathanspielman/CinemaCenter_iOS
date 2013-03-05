@@ -8,9 +8,6 @@
 
 #import "NDSMoviePostersViewController.h"
 #import "NDSMovieDescriptionViewController.h"
-#import "NDSMoviePosterCell.h"
-#import "NDSErrorCell.h"
-#import "NDSLoadCell.h"
 #import "NDSAppDelegate.h"
 
 @interface NDSMoviePostersViewController ()
@@ -111,25 +108,28 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *cell = nil;
     
-    int row = [indexPath row];
-    
-    if(self.loading && row == 0){
+    if(self.loading && indexPath.row == 0){
         
         NSString *CellIdentifier = @"LoadCell";
         
-        NDSLoadCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
-        [cell.activityIndicator startAnimating];
+        UIActivityIndicatorView *activityIndicator = (UIActivityIndicatorView *)[cell viewWithTag:6];
+        
+        [activityIndicator startAnimating];
         
         return cell;
     }
     
-    if (self.pageLoadError && row == 0) {
+    if (self.pageLoadError && indexPath.row == 0) {
         
         NSString *CellIdentifier = @"MoviePosterErrorCell";
         
-        NDSErrorCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        
+        UITextView *textView = (UITextView *)[cell viewWithTag:5];
         
         NSString *errorMessage = nil;
         
@@ -142,7 +142,7 @@
             errorMessage = @"The application had trouble retrieving film data from Cinema Center's website, this is error is our fault. Please check back soon after we solve the problem";
         }
         
-        cell.textView.text = errorMessage;
+        textView.text = errorMessage;
         
         return cell;
 
@@ -150,11 +150,13 @@
     
     NSString *CellIdentifier = @"MoviePosterCell";
     
-    NDSMoviePosterCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
-    NSString *movieKey = [[NSString alloc]initWithFormat:@"movie%d", row];
+    NSString *movieKey = [[NSString alloc]initWithFormat:@"movie%d", indexPath.row];
     
-    cell.moviePoster.image = [self.moviePosterImages objectForKey:movieKey];
+    UIImageView *moviePoster = (UIImageView *)[cell viewWithTag:5];
+    
+    moviePoster.image = [self.moviePosterImages objectForKey:movieKey];
     
     return cell;
 }

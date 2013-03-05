@@ -7,10 +7,6 @@
 //
 
 #import "NDSReceiptViewController.h"
-#import "NDSShowtimeInfoCell.h"
-#import "NDSProofOfPurchaseCell.h"
-#import "NDSSubtotalCell.h"
-#import "NDSTicketTypeCell.h"
 #import "NDSAppDelegate.h"
 
 @interface NDSReceiptViewController ()
@@ -110,52 +106,62 @@
 {
     NSString *CellTableIdentifier = nil;
     
-    int row = [indexPath row];
+    UITableViewCell *cell = nil;
     
-    if (row == 0) {
+    if (indexPath.row == 0) {
         
         CellTableIdentifier = @"ShowtimeInfoCell";
+                
+        cell = [self.tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
         
-        NDSShowtimeInfoCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+        UILabel *showtimeLabel = (UILabel *)[cell viewWithTag:5];
         
-        cell.showtimeLabel.text = self.receipt.event;
+        UILabel *dateLabel = (UILabel *)[cell viewWithTag:6];
         
-        cell.dateLabel.text = self.receipt.eventDate;
+        showtimeLabel.text = self.receipt.event;
+        
+        dateLabel.text = self.receipt.eventDate;
         
         return cell;
     }
     
-    if (row == [self.arrayOfPurchasedTicketIndices count]+1) {
+    if (indexPath.row == [self.arrayOfPurchasedTicketIndices count]+1) {
         
         CellTableIdentifier = @"SubtotalCell";
+                
+        cell = [self.tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
         
-        NDSSubtotalCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+        UITextField *subtotalTextField = (UITextField *)[cell viewWithTag:6];
         
-        cell.subtotalTextField.text = [[NSString alloc]initWithFormat:@"$%.02f",[self.receipt.subTotal doubleValue]];
+        subtotalTextField.text = [[NSString alloc]initWithFormat:@"$%.02f",[self.receipt.subTotal doubleValue]];
         
         return cell;
     }
     
-    if (row == [self.arrayOfPurchasedTicketIndices count]+3) {
+    if (indexPath.row == [self.arrayOfPurchasedTicketIndices count]+3) {
         
         CellTableIdentifier = @"ProofOfPurchaseCell";
         
-        NDSProofOfPurchaseCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+        cell = [self.tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
         
-        cell.purchaseDateTextField.text = self.receipt.purchaseDate;
+        UITextField *purchaseDateTextField = (UITextField *)[cell viewWithTag:7];
+        
+        UITextField *currentTimeTextField = (UITextField *)[cell viewWithTag:8];
+        
+        purchaseDateTextField.text = self.receipt.purchaseDate;
         
         NSString *currentTime = [self.dateFormatter stringFromDate: [NSDate date]];
         
-        cell.currentTimeTextField.text = currentTime;
+        currentTimeTextField.text = currentTime;
         
         return cell;
     }
     
-    if (row == [self.arrayOfPurchasedTicketIndices count]+2) {
+    if (indexPath.row == [self.arrayOfPurchasedTicketIndices count]+2) {
         
         CellTableIdentifier = @"PayKeyCell";
         
-        UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+        cell = [self.tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
         
         cell.textLabel.text = self.receipt.payKey;
         
@@ -179,22 +185,30 @@
     return cell;*/
     
     CellTableIdentifier = @"TicketTypeCell";
+        
+    cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     
-    NDSTicketTypeCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    UILabel *ticketTypeLabel = (UILabel *)[cell viewWithTag:5];
     
-    int purchasedTicketIndex = [[self.arrayOfPurchasedTicketIndices objectAtIndex:row-1]intValue];
+    UITextField *ticketQuantityTextField = (UITextField *)[cell viewWithTag:7];
+    
+    UILabel *ticketPriceLabel = (UILabel *)[cell viewWithTag:8];
+    
+    UITextField *ticketTotalTextField = (UITextField *)[cell viewWithTag:9];
+    
+    int purchasedTicketIndex = [[self.arrayOfPurchasedTicketIndices objectAtIndex:indexPath.row-1]intValue];
     
     NSString *ticketType = [self.arrayOfTicketTypes objectAtIndex:purchasedTicketIndex];
     
-    cell.ticketTypeLabel.text = ticketType;
+    ticketTypeLabel.text = ticketType;
     
-    cell.ticketQuantityTextField.text = [[self.receipt.dictionaryOfPurchaseTypeQuantities objectForKey:ticketType]stringValue];
+    ticketQuantityTextField.text = [[self.receipt.dictionaryOfPurchaseTypeQuantities objectForKey:ticketType]stringValue];
     
     NSNumber *ticketTypePrice = [self.dictionaryOfTicketPrices objectForKey:ticketType];
     
-    cell.ticketPriceLabel.text = [[NSString alloc]initWithFormat:@"x $%.02f =", [ticketTypePrice doubleValue]];
+    ticketPriceLabel.text = [[NSString alloc]initWithFormat:@"x $%.02f =", [ticketTypePrice doubleValue]];
     
-    cell.ticketTotalTextField.text = [[NSString alloc]initWithFormat:@"$%.02f",[[self.receipt.dictionaryOfPurchaseTypeTotals objectForKey:ticketType]doubleValue]];
+    ticketTotalTextField.text = [[NSString alloc]initWithFormat:@"$%.02f",[[self.receipt.dictionaryOfPurchaseTypeTotals objectForKey:ticketType]doubleValue]];
     
     return cell;
 }

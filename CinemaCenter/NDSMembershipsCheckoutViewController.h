@@ -10,7 +10,7 @@
 #import "PayPal.h"
 #import "PayPalPayment.h"
 
-@interface NDSMembershipsCheckoutViewController : UIViewController <PayPalPaymentDelegate>
+@interface NDSMembershipsCheckoutViewController : UIViewController <PayPalPaymentDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (copy, nonatomic) NSString *dateText;
 @property (nonatomic, copy) NSString *showtimeText;

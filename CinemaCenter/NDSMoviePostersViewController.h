@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NDSMoviePostersViewController : UIViewController
+@interface NDSMoviePostersViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

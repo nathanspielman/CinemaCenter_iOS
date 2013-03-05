@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6602755A16E4FE320076077A /* NDSXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6602755916E4FE320076077A /* NDSXMLParser.m */; };
 		6613D64216E163CC002AACDA /* Core_Data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6613D64016E163CC002AACDA /* Core_Data.xcdatamodeld */; };
 		66494A5A16E106740042C942 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494A5916E106740042C942 /* UIKit.framework */; };
 		66494A5C16E106740042C942 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494A5B16E106740042C942 /* Foundation.framework */; };
@@ -29,16 +30,6 @@
 		66494AAF16E1079E0042C942 /* NDSMembershipsDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AA116E1079E0042C942 /* NDSMembershipsDetailsViewController.m */; };
 		66494AB016E1079E0042C942 /* NDSReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AA316E1079E0042C942 /* NDSReceiptsViewController.m */; };
 		66494AB116E1079E0042C942 /* NDSReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AA516E1079E0042C942 /* NDSReceiptViewController.m */; };
-		66494AC716E107B40042C942 /* NDSScheduleFilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AB416E107B40042C942 /* NDSScheduleFilmCell.m */; };
-		66494AC816E107B40042C942 /* NDSLoadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AB616E107B40042C942 /* NDSLoadCell.m */; };
-		66494AC916E107B40042C942 /* NDSErrorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AB816E107B40042C942 /* NDSErrorCell.m */; };
-		66494ACA16E107B40042C942 /* NDSMoviePosterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494ABA16E107B40042C942 /* NDSMoviePosterCell.m */; };
-		66494ACB16E107B40042C942 /* NDSShowtimeInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494ABC16E107B40042C942 /* NDSShowtimeInfoCell.m */; };
-		66494ACC16E107B40042C942 /* NDSTicketTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494ABE16E107B40042C942 /* NDSTicketTypeCell.m */; };
-		66494ACD16E107B40042C942 /* NDSMembershipDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AC016E107B40042C942 /* NDSMembershipDetailCell.m */; };
-		66494ACE16E107B40042C942 /* NDSSubtotalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AC216E107B40042C942 /* NDSSubtotalCell.m */; };
-		66494ACF16E107B40042C942 /* NDSReceiptCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AC416E107B40042C942 /* NDSReceiptCell.m */; };
-		66494AD016E107B40042C942 /* NDSProofOfPurchaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66494AC616E107B40042C942 /* NDSProofOfPurchaseCell.m */; };
 		66494AE016E107CA0042C942 /* icon_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494AD116E107CA0042C942 /* icon_transparent.png */; };
 		66494AE116E107CA0042C942 /* mappin.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494AD216E107CA0042C942 /* mappin.png */; };
 		66494AE216E107CA0042C942 /* jacket.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494AD316E107CA0042C942 /* jacket.png */; };
@@ -70,6 +61,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6602755816E4FE320076077A /* NDSXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSXMLParser.h; sourceTree = "<group>"; };
+		6602755916E4FE320076077A /* NDSXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSXMLParser.m; sourceTree = "<group>"; };
 		6613D64116E163CC002AACDA /* Core_Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Core_Data.xcdatamodel; sourceTree = "<group>"; };
 		66494A5616E106740042C942 /* CinemaCenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinemaCenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66494A5916E106740042C942 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -110,26 +103,6 @@
 		66494AA316E1079E0042C942 /* NDSReceiptsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSReceiptsViewController.m; sourceTree = "<group>"; };
 		66494AA416E1079E0042C942 /* NDSReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSReceiptViewController.h; sourceTree = "<group>"; };
 		66494AA516E1079E0042C942 /* NDSReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSReceiptViewController.m; sourceTree = "<group>"; };
-		66494AB316E107B40042C942 /* NDSScheduleFilmCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSScheduleFilmCell.h; sourceTree = "<group>"; };
-		66494AB416E107B40042C942 /* NDSScheduleFilmCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSScheduleFilmCell.m; sourceTree = "<group>"; };
-		66494AB516E107B40042C942 /* NDSLoadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSLoadCell.h; sourceTree = "<group>"; };
-		66494AB616E107B40042C942 /* NDSLoadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSLoadCell.m; sourceTree = "<group>"; };
-		66494AB716E107B40042C942 /* NDSErrorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSErrorCell.h; sourceTree = "<group>"; };
-		66494AB816E107B40042C942 /* NDSErrorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSErrorCell.m; sourceTree = "<group>"; };
-		66494AB916E107B40042C942 /* NDSMoviePosterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSMoviePosterCell.h; sourceTree = "<group>"; };
-		66494ABA16E107B40042C942 /* NDSMoviePosterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSMoviePosterCell.m; sourceTree = "<group>"; };
-		66494ABB16E107B40042C942 /* NDSShowtimeInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSShowtimeInfoCell.h; sourceTree = "<group>"; };
-		66494ABC16E107B40042C942 /* NDSShowtimeInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSShowtimeInfoCell.m; sourceTree = "<group>"; };
-		66494ABD16E107B40042C942 /* NDSTicketTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSTicketTypeCell.h; sourceTree = "<group>"; };
-		66494ABE16E107B40042C942 /* NDSTicketTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSTicketTypeCell.m; sourceTree = "<group>"; };
-		66494ABF16E107B40042C942 /* NDSMembershipDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSMembershipDetailCell.h; sourceTree = "<group>"; };
-		66494AC016E107B40042C942 /* NDSMembershipDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSMembershipDetailCell.m; sourceTree = "<group>"; };
-		66494AC116E107B40042C942 /* NDSSubtotalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSSubtotalCell.h; sourceTree = "<group>"; };
-		66494AC216E107B40042C942 /* NDSSubtotalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSSubtotalCell.m; sourceTree = "<group>"; };
-		66494AC316E107B40042C942 /* NDSReceiptCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSReceiptCell.h; sourceTree = "<group>"; };
-		66494AC416E107B40042C942 /* NDSReceiptCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSReceiptCell.m; sourceTree = "<group>"; };
-		66494AC516E107B40042C942 /* NDSProofOfPurchaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSProofOfPurchaseCell.h; sourceTree = "<group>"; };
-		66494AC616E107B40042C942 /* NDSProofOfPurchaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSProofOfPurchaseCell.m; sourceTree = "<group>"; };
 		66494AD116E107CA0042C942 /* icon_transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_transparent.png; sourceTree = "<group>"; };
 		66494AD216E107CA0042C942 /* mappin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mappin.png; sourceTree = "<group>"; };
 		66494AD316E107CA0042C942 /* jacket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jacket.png; sourceTree = "<group>"; };
@@ -285,6 +258,8 @@
 				66494A8816E107870042C942 /* NDSMapAnnotation.m */,
 				66494A8916E107870042C942 /* NDSReceipt.h */,
 				66494A8A16E107870042C942 /* NDSReceipt.m */,
+				6602755816E4FE320076077A /* NDSXMLParser.h */,
+				6602755916E4FE320076077A /* NDSXMLParser.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -316,7 +291,6 @@
 				66494AA316E1079E0042C942 /* NDSReceiptsViewController.m */,
 				66494AA416E1079E0042C942 /* NDSReceiptViewController.h */,
 				66494AA516E1079E0042C942 /* NDSReceiptViewController.m */,
-				66494AB216E107A20042C942 /* Cells */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -339,33 +313,6 @@
 				66494ADF16E107CA0042C942 /* film_cell_cut.png */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		66494AB216E107A20042C942 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				66494AB316E107B40042C942 /* NDSScheduleFilmCell.h */,
-				66494AB416E107B40042C942 /* NDSScheduleFilmCell.m */,
-				66494AB516E107B40042C942 /* NDSLoadCell.h */,
-				66494AB616E107B40042C942 /* NDSLoadCell.m */,
-				66494AB716E107B40042C942 /* NDSErrorCell.h */,
-				66494AB816E107B40042C942 /* NDSErrorCell.m */,
-				66494AB916E107B40042C942 /* NDSMoviePosterCell.h */,
-				66494ABA16E107B40042C942 /* NDSMoviePosterCell.m */,
-				66494ABB16E107B40042C942 /* NDSShowtimeInfoCell.h */,
-				66494ABC16E107B40042C942 /* NDSShowtimeInfoCell.m */,
-				66494ABD16E107B40042C942 /* NDSTicketTypeCell.h */,
-				66494ABE16E107B40042C942 /* NDSTicketTypeCell.m */,
-				66494ABF16E107B40042C942 /* NDSMembershipDetailCell.h */,
-				66494AC016E107B40042C942 /* NDSMembershipDetailCell.m */,
-				66494AC116E107B40042C942 /* NDSSubtotalCell.h */,
-				66494AC216E107B40042C942 /* NDSSubtotalCell.m */,
-				66494AC316E107B40042C942 /* NDSReceiptCell.h */,
-				66494AC416E107B40042C942 /* NDSReceiptCell.m */,
-				66494AC516E107B40042C942 /* NDSProofOfPurchaseCell.h */,
-				66494AC616E107B40042C942 /* NDSProofOfPurchaseCell.m */,
-			);
-			name = Cells;
 			sourceTree = "<group>";
 		};
 		66494B0F16E109CE0042C942 /* PayPal API */ = {
@@ -484,17 +431,8 @@
 				66494AAF16E1079E0042C942 /* NDSMembershipsDetailsViewController.m in Sources */,
 				66494AB016E1079E0042C942 /* NDSReceiptsViewController.m in Sources */,
 				66494AB116E1079E0042C942 /* NDSReceiptViewController.m in Sources */,
-				66494AC716E107B40042C942 /* NDSScheduleFilmCell.m in Sources */,
-				66494AC816E107B40042C942 /* NDSLoadCell.m in Sources */,
-				66494AC916E107B40042C942 /* NDSErrorCell.m in Sources */,
-				66494ACA16E107B40042C942 /* NDSMoviePosterCell.m in Sources */,
-				66494ACB16E107B40042C942 /* NDSShowtimeInfoCell.m in Sources */,
-				66494ACC16E107B40042C942 /* NDSTicketTypeCell.m in Sources */,
-				66494ACD16E107B40042C942 /* NDSMembershipDetailCell.m in Sources */,
-				66494ACE16E107B40042C942 /* NDSSubtotalCell.m in Sources */,
-				66494ACF16E107B40042C942 /* NDSReceiptCell.m in Sources */,
-				66494AD016E107B40042C942 /* NDSProofOfPurchaseCell.m in Sources */,
 				6613D64216E163CC002AACDA /* Core_Data.xcdatamodeld in Sources */,
+				6602755A16E4FE320076077A /* NDSXMLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

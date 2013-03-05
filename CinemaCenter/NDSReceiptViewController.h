@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NDSReceipt.h"
 
-@interface NDSReceiptViewController : UIViewController
+@interface NDSReceiptViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NDSReceipt *receipt;
 

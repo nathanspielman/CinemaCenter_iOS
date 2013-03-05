@@ -7,7 +7,6 @@
 //
 
 #import "NDSMembershipsDetailsViewController.h"
-#import "NDSMembershipDetailCell.h"
 #import "NDSAppDelegate.h"
 
 @interface NDSMembershipsDetailsViewController ()
@@ -102,35 +101,35 @@
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *CellTableIdentifier = nil;
-    
-    int section = [indexPath section];
-    
-    int row = [indexPath row];
-    
-    if (section == 0 && row == 3) {
+            
+    if (indexPath.section == 0 && indexPath.row == 3) {
         CellTableIdentifier = @"MembershipDetailCell3";
     }
-    else if (section == 2 && (row == 0 || row == 1) ) {
+    else if (indexPath.section == 2 && (indexPath.row == 0 || indexPath.row == 1) ) {
         CellTableIdentifier = @"MembershipDetailCell1";
     }
-    else if (section == 2 && row == 2) {
+    else if (indexPath.section == 2 && indexPath.row == 2) {
         CellTableIdentifier = @"MembershipDetailCell4";
     }
     else {
         CellTableIdentifier = @"MembershipDetailCell2";
     }
     
-    NDSMembershipDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     
-    NSString *membershipTypeKey = [[NSString alloc]initWithFormat:@"MembershipType%d-%d", section, row];
+    UILabel *membershipTypeLabel = (UILabel *)[cell viewWithTag:5];
+    
+    UILabel *membershipDetailLabel = (UILabel *)[cell viewWithTag:6];
+    
+    NSString *membershipTypeKey = [[NSString alloc]initWithFormat:@"MembershipType%d-%d", indexPath.section, indexPath.row];
     
     NSString *membershipType = [self.dictionaryOfMembershipTypes objectForKey:membershipTypeKey];
         
     NSString *membershipDetail = [self.dictionaryOfMembershipDetails objectForKey:membershipTypeKey];
     
-    cell.membershipTypeLabel.text = membershipType;
+    membershipTypeLabel.text = membershipType;
         
-    cell.membershipDetailLabel.text = membershipDetail;
+    membershipDetailLabel.text = membershipDetail;
         
     return cell;
 

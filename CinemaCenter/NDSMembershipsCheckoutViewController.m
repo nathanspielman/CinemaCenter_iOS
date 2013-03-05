@@ -7,9 +7,6 @@
 //
 
 #import "NDSMembershipsCheckoutViewController.h"
-#import "NDSShowtimeInfoCell.h"
-#import "NDSTicketTypeCell.h"
-#import "NDSSubtotalCell.h"
 #import "NDSReceipt.h"
 #import "NDSAppDelegate.h"
 
@@ -220,7 +217,7 @@
 {
     int value = (int)[sender value];
     
-    NSString *membershipType = [(UITextField *)[[sender superview]viewWithTag:3]text];
+    NSString *membershipType = [(UITextField *)[[sender superview]viewWithTag:5]text];
     
     NSNumber *quantity = [NSNumber numberWithInt:value];
     
@@ -254,9 +251,11 @@
     
     self.subtotal = subtotal;
     
-    NDSSubtotalCell *cell = (NDSSubtotalCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
     
-    cell.subtotalTextField.text = [[NSString alloc]initWithFormat:@"$%.02f", self.subtotal];
+    UITextField *subtotalTextField = (UITextField *)[cell viewWithTag:6];
+    
+    subtotalTextField.text = [[NSString alloc]initWithFormat:@"$%.02f", self.subtotal];
     
     [self.tableView reloadData];
 }
@@ -442,11 +441,9 @@
 {
     NSString *CellTableIdentifier = nil;
     
-    int section = [indexPath section];
-    
-    int row = [indexPath row];
-    
-    /*if (section == 0 && row == 0) {
+    UITableViewCell *cell = nil;
+            
+    /*if (indexPath.section == 0 && indexPath.row == 0) {
         
         CellTableIdentifier = @"ShowtimeInfoCell";
         
@@ -459,31 +456,33 @@
         return cell;
     }*/
     
-    if (section == 3 && row == 0) {
+    if (indexPath.section == 3 && indexPath.row == 0) {
         
         CellTableIdentifier = @"SubtotalCell";
+                
+        cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
         
-        NDSSubtotalCell *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+        UITextField *subtotalTextField = (UITextField *)[cell viewWithTag:6];
         
-        cell.subtotalTextField.text = [[NSString alloc]initWithFormat:@"$%.02f", self.subtotal];
+        subtotalTextField.text = [[NSString alloc]initWithFormat:@"$%.02f", self.subtotal];
         
         return cell;
     }
     
-    if (section == 3 && row == 1) {
+    if (indexPath.section == 3 && indexPath.row == 1) {
         
         CellTableIdentifier = @"DeliveryOptionCell";
         
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+        cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
                 
         return cell;
     }
     
-    if (section == 3 && row == 2) {
+    if (indexPath.section == 3 && indexPath.row == 2) {
         
         CellTableIdentifier = @"PayPalButtonCell";
         
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+        cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
         
         UIButton *payPalButton = [[PayPal getPayPalInst] getPayButtonWithTarget:self andAction:@selector(payWithPayPal) andButtonType:BUTTON_278x43 andButtonText:BUTTON_TEXT_PAY];
         
@@ -509,41 +508,53 @@
     
     /*CellTableIdentifier = @"TicketTypeOriginalCell";
     
-    NDSTicketTypeCellController *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+     
+    UILabel *ticketTypeLabel = (UILabel *)[cell viewWithTag:5];
+     
+    UITextField *ticketQuantityTextField = (UITextField *)[cell viewWithTag:7];
     
-    NSString *ticketTypeKey = [[NSString alloc]initWithFormat:@"MembershipType%d-%d", section, row];
+    NSString *ticketTypeKey = [[NSString alloc]initWithFormat:@"MembershipType%d-%d", indexPath.section, indexPath.row];
     
     NSString *ticketTypeLabel = [self.dictionaryOfMembershipTypes objectForKey:ticketTypeKey];
     
-    cell.ticketTypeLabel.text = ticketTypeLabel;
+    ticketTypeLabel.text = ticketTypeLabel;
         
     NSString *quantityText = [[self.dictionaryOfMembershipTypeQuantities objectForKey:ticketTypeLabel]stringValue];
     
-    cell.ticketQuantityTextField.text = quantityText;
+    ticketQuantityTextField.text = quantityText;
     
     return cell;*/
     
     CellTableIdentifier = @"TicketTypeCell";
     
-    NDSTicketTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     
-    NSString *membershipTypeKey = [[NSString alloc]initWithFormat:@"MembershipType%d-%d", section, row];
+    UILabel *ticketTypeLabel = (UILabel *)[cell viewWithTag:5];
+    
+    UITextField *ticketQuantityTextField = (UITextField *)[cell viewWithTag:7];
+    
+    UILabel *ticketPriceLabel = (UILabel *)[cell viewWithTag:8];
+    
+    UITextField *ticketTotalTextField = (UITextField *)[cell viewWithTag:9];
+    
+    NSString *membershipTypeKey = [[NSString alloc]initWithFormat:@"MembershipType%d-%d", indexPath.section, indexPath.row];
     
     NSString *membershipType = [self.dictionaryOfMembershipTypes objectForKey:membershipTypeKey];
     
-    cell.ticketTypeLabel.text = membershipType;
+    ticketTypeLabel.text = membershipType;
     
     NSString *membershipTypeQuantity = [[self.dictionaryOfMembershipTypeQuantities objectForKey:membershipType]stringValue];
     
-    cell.ticketQuantityTextField.text = membershipTypeQuantity;
+    ticketQuantityTextField.text = membershipTypeQuantity;
     
     NSNumber *membershipTypePrice = [self.dictionaryOfMembershipPrices objectForKey:membershipTypeKey];
     
-    cell.ticketPriceLabel.text = [[NSString alloc]initWithFormat:@"x $%d =", [membershipTypePrice intValue]];
+    ticketPriceLabel.text = [[NSString alloc]initWithFormat:@"x $%d =", [membershipTypePrice intValue]];
     
     NSNumber *membershipTypeTotal = [self.dictionaryOfMembershipTypeTotals objectForKey:membershipType];
     
-    cell.ticketTotalTextField.text = [[NSString alloc]initWithFormat:@"$%d", [membershipTypeTotal intValue]];
+    ticketTotalTextField.text = [[NSString alloc]initWithFormat:@"$%d", [membershipTypeTotal intValue]];
     
     return cell;
 }

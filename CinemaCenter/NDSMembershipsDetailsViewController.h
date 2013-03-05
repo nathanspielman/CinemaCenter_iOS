@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NDSMembershipsDetailsViewController : UIViewController
+@interface NDSMembershipsDetailsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end
