@@ -43,14 +43,11 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    int row = [indexPath row];
-    
     NSString *CellTableIdentifier = nil;
     
     UITableViewCell *cell = nil;
     
-    if(row == 0){
+    if(indexPath.row == 0){
         
         CellTableIdentifier = @"MapCell";
         
@@ -62,7 +59,7 @@
         
     }
     
-    if(row == 1){
+    if(indexPath.row == 1){
         
         CellTableIdentifier = @"MembershipsCell";
         
@@ -74,7 +71,7 @@
         
     }
     
-    if(row == 2){
+    if(indexPath.row == 2){
         
         CellTableIdentifier = @"ReceiptsCell";
         

@@ -10,8 +10,6 @@
 #import "NDSMovieTicketsShowtimesViewController.h"
 #import "NDSAppDelegate.h"
 #import "NDSScheduleViewController.h"
-#import "NDSLoadCell.h"
-#import "NDSErrorCell.h"
 
 @interface NDSMovieTicketsDatesViewController ()
 
@@ -131,25 +129,29 @@
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    int row = [indexPath row];
+{    
+    UITableViewCell *cell = nil;
     
-    if(self.loading && row == 0){
+    if(self.loading && indexPath.row == 0){
         
         NSString *CellIdentifier = @"LoadCell";
         
-        NDSLoadCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
-        [cell.activityIndicator startAnimating];
+        UIActivityIndicatorView *activityIndicator = (UIActivityIndicatorView *)[cell viewWithTag:6];
+        
+        [activityIndicator startAnimating];
         
         return cell;
     }
     
-    if (self.pageLoadError && row == 0) {
+    if (self.pageLoadError && indexPath.row == 0) {
         
         NSString *CellIdentifier = @"MoviePosterErrorCell";
         
-        NDSErrorCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        
+        UITextView *textView = (UITextView *)[cell viewWithTag:5];
         
         NSString *errorMessage = nil;
         
@@ -162,16 +164,16 @@
             errorMessage = @"The application had trouble retrieving film data from Cinema Center's website, this is error is our fault. Please check back soon after we solve the problem";
         }
         
-        cell.textView.text = errorMessage;
+        textView.text = errorMessage;
         
         return cell;
         
     }
     NSString *CellTableIdentifier = @"DateCell";
         
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     
-    NSString *dayKey = [[NSString alloc]initWithFormat:@"day%d", row+1+self.daysRemoved];
+    NSString *dayKey = [[NSString alloc]initWithFormat:@"day%d", indexPath.row+1+self.daysRemoved];
     
     NSString *dayText = [self.dictionaryOfDaysText objectForKey:dayKey];
     
@@ -351,7 +353,7 @@
     }
     
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"MMMM dd"];
+    [format setDateFormat:@"MMMM d"];
     NSDate *now = [[NSDate alloc] init];
     NSString *today = [format stringFromDate:now];
     

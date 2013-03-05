@@ -8,7 +8,6 @@
 
 #import "NDSReceiptsViewController.h"
 #import "NDSReceipt.h"
-#import "NDSReceiptCell.h"
 #import "NDSReceiptViewController.h"
 #import "NDSAppDelegate.h"
 
@@ -246,11 +245,13 @@
 {
     NSString *CellTableIdentifier = @"ReceiptCell";
     
-    NDSReceiptCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     
-    int row = [indexPath row];
-    
-    int index = [self.receiptsArray count]-1-row;
+    UILabel *showtimeLabel = (UILabel *)[cell viewWithTag:5];
+    UILabel *dateLabel = (UILabel *)[cell viewWithTag:6];
+    UILabel *subtotalLabel = (UILabel *)[cell viewWithTag:7];
+        
+    int index = [self.receiptsArray count]-1-indexPath.row;
     
     NDSReceipt *receipt = [self.receiptsArray objectAtIndex:index];
         
@@ -258,16 +259,16 @@
     
     if (receipt.isMembershipReceipt) {
         
-        cell.showtimeLabel.text = @"Membership Purchase";
-        cell.dateLabel.text = receipt.purchaseDate;
+        showtimeLabel.text = @"Membership Purchase";
+        dateLabel.text = receipt.purchaseDate;
     }
     else{
         
-        cell.showtimeLabel.text = receipt.event;
-        cell.dateLabel.text = receipt.eventDate;
+        showtimeLabel.text = receipt.event;
+        dateLabel.text = receipt.eventDate;
     }
         
-    cell.subtotalLabel.text = [[NSString alloc]initWithFormat:@"%@", [self.formatter stringFromNumber:receipt.subTotal]];
+    subtotalLabel.text = [[NSString alloc]initWithFormat:@"%@", [self.formatter stringFromNumber:receipt.subTotal]];
     
     return cell;
 }

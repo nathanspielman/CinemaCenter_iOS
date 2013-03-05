@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NDSMovieTicketsShowtimesViewController : UIViewController
+@interface NDSMovieTicketsShowtimesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (copy, nonatomic) NSString *dateText;
 @property (nonatomic, copy) NSString *showtimesText;

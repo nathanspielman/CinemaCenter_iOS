@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NDSScheduleViewController : UIViewController
+@interface NDSScheduleViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

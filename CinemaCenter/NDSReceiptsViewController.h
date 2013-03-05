@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NDSReceiptsViewController : UIViewController <UITableViewDelegate, UIAlertViewDelegate>
+@interface NDSReceiptsViewController : UIViewController <UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @end

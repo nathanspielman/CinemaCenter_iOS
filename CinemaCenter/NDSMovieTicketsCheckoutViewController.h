@@ -10,7 +10,7 @@
 #import "PayPal.h"
 #import "PayPalPayment.h"
 
-@interface NDSMovieTicketsCheckoutViewController : UIViewController <PayPalPaymentDelegate>
+@interface NDSMovieTicketsCheckoutViewController : UIViewController <PayPalPaymentDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, copy) NSString *dateText;
 @property (nonatomic, copy) NSString *showtimeText;

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NDSMovieTicketsDatesViewController : UIViewController
+@interface NDSMovieTicketsDatesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end
