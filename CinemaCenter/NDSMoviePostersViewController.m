@@ -8,16 +8,17 @@
 
 #import "NDSMoviePostersViewController.h"
 #import "NDSMovieDescriptionViewController.h"
+#import "TFHpple.h"
+#import "TFHppleElement.h"
 #import "NDSAppDelegate.h"
 
 @interface NDSMoviePostersViewController ()
 
-@property (strong,nonatomic) NSMutableDictionary *moviePosterImages;
-@property (strong,nonatomic) NSMutableDictionary *movieDescriptions;
-@property (strong,nonatomic) NSArray *htmlOriginalSymbolArray;
-@property (strong,nonatomic) NSArray *htmlReplacedSymbolArray;
-@property (assign, nonatomic) NSInteger pageLoadError;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) BOOL loading;
+@property (assign, nonatomic) NSInteger loadingError;
+@property (strong, nonatomic) NSArray *moviePostersArray;
+@property (strong, nonatomic) NSArray *movieDescriptionsArray;
 
 @end
 
@@ -28,13 +29,7 @@
     [super viewDidLoad];
     
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.png"]];
-    
-    self.moviePosterImages = [[NSMutableDictionary alloc]init];
-    self.movieDescriptions = [[NSMutableDictionary alloc]init];
-    
-    self.htmlOriginalSymbolArray = ((NDSAppDelegate *)[[UIApplication sharedApplication]delegate]).htmlOriginalSymbolArray;
-    self.htmlReplacedSymbolArray = ((NDSAppDelegate *)[[UIApplication sharedApplication]delegate]).htmlReplacedSymbolArray;
-    
+        
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshView)];
     
     self.navigationItem.rightBarButtonItem = refreshButton;
@@ -45,11 +40,11 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     
-    if (self.pageLoadError || self.loading) {
+    if (self.loadingError || self.loading) {
         
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             
-            self.pageLoadError = [self parseWebsiteText];
+            self.loadingError = [self parseWebsiteHTML];
 
             dispatch_async(dispatch_get_main_queue(), ^{
                 
@@ -67,7 +62,7 @@
     
     self.tableView.showsHorizontalScrollIndicator = NO;
     
-    if (self.pageLoadError || self.loading) {
+    if (self.loadingError || self.loading) {
         
         self.loading = YES;
         
@@ -99,11 +94,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.loading || self.pageLoadError){
+    if (self.loading || self.loadingError){
         return 1;
     }
     
-    return [self.moviePosterImages count];
+    return [self.moviePostersArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -123,7 +118,7 @@
         return cell;
     }
     
-    if (self.pageLoadError && indexPath.row == 0) {
+    if (self.loadingError && indexPath.row == 0) {
         
         NSString *CellIdentifier = @"MoviePosterErrorCell";
         
@@ -133,7 +128,7 @@
         
         NSString *errorMessage = nil;
         
-        if(self.pageLoadError == -1){
+        if(self.loadingError == -1){
             
             errorMessage = @"The application could not connect to Cinema Center's website for film data, please check network connection and restart the application";
         }
@@ -151,12 +146,10 @@
     NSString *CellIdentifier = @"MoviePosterCell";
     
     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-
-    NSString *movieKey = [[NSString alloc]initWithFormat:@"movie%d", indexPath.row];
     
     UIImageView *moviePoster = (UIImageView *)[cell viewWithTag:5];
     
-    moviePoster.image = [self.moviePosterImages objectForKey:movieKey];
+    moviePoster.image = [self.moviePostersArray objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -166,12 +159,10 @@
     NDSMovieDescriptionViewController *destination = segue.destinationViewController;
     
     int row = [[self.tableView indexPathForSelectedRow]row];
+        
+    NSString *movieText = [self.movieDescriptionsArray objectAtIndex:row];
     
-    NSString *movieKey = [[NSString alloc]initWithFormat:@"movie%d", row];
-    
-    NSString *movieText = [self.movieDescriptions objectForKey:movieKey];
-    
-    NSRange range;
+    /*NSRange range;
     
     for (int i = 0; i < 2; i++) {
         
@@ -184,247 +175,172 @@
         
     NSString *movieTitle = [movieText substringToIndex:range.location-1];
         
-    destination.movieTitle = movieTitle;
+    destination.movieTitle = movieTitle;*/
         
     destination.movieDescription = movieText;
 }
 
--(int)parseWebsiteText
+- (int)parseWebsiteHTML
 {
-    self.pageLoadError = NO;
+    self.loadingError = NO;
     
-    //self.moviePosterImages = [[NSMutableDictionary alloc]init];
-    //self.movieDescriptions = [[NSMutableDictionary alloc]init];
+    NSMutableArray *moviePostersArray = [[NSMutableArray alloc] init];
     
-    NSString *ccWebLink = nil;
-    NSString *pageHeading = nil;
+    NSMutableArray *movieDescriptionsArray = [[NSMutableArray alloc] init];
+    
+    NSString *url = nil;
+    NSString *navigationBarTitle = nil;
+    NSString *searchXPath = nil;
     
     if([self.tabBarItem.title isEqualToString:@"Now Showing"]){
-        ccWebLink = @"http://cinemacenter.org/movies/movies/now-showing.php";
-        pageHeading = @"Now Showing";
+        url = @"http://cinemacenter.org/movies/movies/now-showing.php";
+        navigationBarTitle = @"Now Showing";
+        //searchXPath = @"//div[@class='cms-editable  pl_stacks_in_47_page29 ']";
+        searchXPath = @"//div[@id='pl_stacks_in_47_page29']";
     }
     else if([self.tabBarItem.title isEqualToString:@"Coming Soon"]){
-        ccWebLink = @"http://cinemacenter.org/movies/movies/coming-attractions.php";
-        pageHeading = @"Coming Attractions";
+        url = @"http://cinemacenter.org/movies/movies/coming-attractions.php";
+        navigationBarTitle = @"Coming Attractions";
+        //searchXPath = @"//div[@class='cms-editable  pl_stacks_in_58_page14 ']";
+        searchXPath = @"//div[@id='pl_stacks_in_58_page14']";
     }
     
-    NSURL *ccURL = [NSURL URLWithString:ccWebLink];
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
     
-    NSError *error;
-        
-    NSString *ccPageContent = [NSString stringWithContentsOfURL:ccURL encoding:NSASCIIStringEncoding error:&error];
-    
-    if(ccPageContent == nil){
-        self.pageLoadError = YES;
+    if (data == nil) {
+        self.loadingError = YES;
         return -1;
     }
     
-    NSRange searchRange, foundRange, trimRange;
+    TFHpple *document = [[TFHpple alloc] initWithHTMLData:data];
     
-    
-    //Get rid of all the stuff before searchString variable
-    
-    foundRange = [ccPageContent rangeOfString:pageHeading];
-    
-    if(foundRange.location == NSNotFound){
-        self.pageLoadError = YES;
+    if (document == nil) {
+        self.loadingError = YES;
         return -2;
     }
+                
+    NSArray *searchPathElements = [document searchWithXPathQuery:searchXPath];
     
-    NSRange pageHeadingRange = NSMakeRange(foundRange.location, ([ccPageContent length] - foundRange.location));
-    
-    ccPageContent = [ccPageContent substringWithRange:pageHeadingRange];
-    
-    
-    
-    //Get rid of all the stuff after "<!-- End of PageLime Text Stack -->"
-    
-    foundRange = [ccPageContent rangeOfString:@"<!-- End of PageLime Text Stack -->"];
-    
-    if(foundRange.location == NSNotFound){
-        self.pageLoadError = YES;
+    if (searchPathElements == nil || [searchPathElements count] == 0) {
+        self.loadingError = YES;
         return -3;
     }
     
-    pageHeadingRange = NSMakeRange(0, foundRange.location);
-    
-    ccPageContent = [ccPageContent substringWithRange:pageHeadingRange];
-    
-    for (int i = 0; i < [self.htmlOriginalSymbolArray count]; i++) {
+    NSArray *elements = [[searchPathElements objectAtIndex:0] children];
         
-        NSString *originalSymbol = [self.htmlOriginalSymbolArray objectAtIndex:i];
-        
-        NSString *replacedSymbol = [self.htmlReplacedSymbolArray objectAtIndex:i];
-        
-        ccPageContent = [ccPageContent stringByReplacingOccurrencesOfString:originalSymbol withString:replacedSymbol];
+    if (elements == nil || [elements count] == 0) {
+        self.loadingError = YES;
+        return -4;
     }
     
-    int movieCount = 0;
+    BOOL foundMovie = NO;
     
-    BOOL finished = NO;
+    NSString *movieDescription = @"";
     
-    while (true) {
+    for (TFHppleElement *element in elements) {
         
-        if(finished){
-            break;
-        }
+        NSArray *imgChildren = [self imgChildrenFromElement:element];
         
-        NSString *movieKey = [[NSString alloc]initWithFormat:@"movie%d", movieCount];
-        
-        searchRange = NSMakeRange(0, [ccPageContent length]);
-        
-        foundRange = [ccPageContent rangeOfString:@"<img" options:NSCaseInsensitiveSearch range:searchRange];
-        
-        if(foundRange.location == NSNotFound){
-            self.pageLoadError = YES;
-            return -4;
-        }
-        
-        NSUInteger imgLocation = foundRange.location;
-        
-        foundRange = [ccPageContent rangeOfString:@"src" options:NSCaseInsensitiveSearch range:searchRange];
-        
-        if(foundRange.location == NSNotFound){
-            self.pageLoadError = YES;
-            return -5;
-        }
-        
-        NSUInteger srcLocation = foundRange.location;
-        
-        searchRange = NSMakeRange(imgLocation, srcLocation-imgLocation);
-        
-        foundRange = [ccPageContent rangeOfString:@"Poster" options:NSCaseInsensitiveSearch range:searchRange];
-        
-        if (foundRange.location == NSNotFound) {
-                        
-            ccPageContent = [ccPageContent substringFromIndex:srcLocation+3];
-            continue;
-        }
-        
-        searchRange = NSMakeRange(0, [ccPageContent length]);
-        
-        foundRange = [ccPageContent rangeOfString:@"src" options:NSCaseInsensitiveSearch range:searchRange];
-        
-        if(foundRange.location == NSNotFound){
-            self.pageLoadError = YES;
-            return -6;
-        }
-        
-        trimRange = NSMakeRange(foundRange.location, [ccPageContent length]-foundRange.location);
-        
-        ccPageContent = [ccPageContent substringWithRange:trimRange];
-        
-        searchRange = NSMakeRange(0, [ccPageContent length]);
-        
-        //First quotation mark surrounding image web link
-        foundRange = [ccPageContent rangeOfString:@"\"" options:NSCaseInsensitiveSearch range:searchRange];
-        
-        if(foundRange.location == NSNotFound){
-            self.pageLoadError = YES;
-            return -7;
-        }
-        
-        NSUInteger trimLocation = foundRange.location + 1;
-        
-        NSUInteger trimLength = [ccPageContent length] - trimLocation;
-        
-        trimRange = NSMakeRange(trimLocation, trimLength);
-        
-        ccPageContent = [ccPageContent substringWithRange:trimRange];
-        
-        //Second quotation mark surrounding image web link
-        searchRange = NSMakeRange(0, [ccPageContent length]);
-        
-        foundRange = [ccPageContent rangeOfString:@"\"" options:NSCaseInsensitiveSearch range:searchRange];
-        
-        if(foundRange.location == NSNotFound){
-            self.pageLoadError = YES;
-            return -8;
-        }
-        
-        trimLocation = 0;
-        
-        trimLength = foundRange.location;
-        
-        trimRange = NSMakeRange(trimLocation, trimLength);
-        
-        NSString *posterURL = [ccPageContent substringWithRange:trimRange];
-        
-        trimLocation = foundRange.location;
-        
-        trimLength = [ccPageContent length] - trimLocation;
-        
-        trimRange = NSMakeRange(trimLocation, trimLength);
-        
-        ccPageContent = [ccPageContent substringWithRange:trimRange];
-        
-        foundRange = [ccPageContent rangeOfString:@">"];
-        
-        if(foundRange.location == NSNotFound){
-            self.pageLoadError = YES;
-            return -9;
-        }
-        
-        trimRange = NSMakeRange(foundRange.location+1, [ccPageContent length]-foundRange.location-1);
-        
-        ccPageContent = [ccPageContent substringWithRange:trimRange];
-        
-        //Add the movie poster image to the array
-        
-        NSURL *URL = [NSURL URLWithString:posterURL];
-        
-        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:URL]];
-        
-        [self.moviePosterImages setObject:image forKey:movieKey];
-        
-        //Find the next movie poster image web link location
-        
-        searchRange = NSMakeRange(0, [ccPageContent length]);
-        
-        foundRange = [ccPageContent rangeOfString:@"src" options:NSCaseInsensitiveSearch range:searchRange];
-        
-        if (foundRange.location == NSNotFound) {
+        if ([imgChildren count] > 0) {
             
-            foundRange.location = [ccPageContent length];
-            
-            finished = YES;
-        }
-        
-        trimRange = NSMakeRange(0, foundRange.location);
-        
-        NSString *movieDescription = [ccPageContent substringWithRange:trimRange];
-        
-        NSRange firstRange = [movieDescription rangeOfString:@"<"];
-        
-        while (firstRange.location != NSNotFound) {
-            
-            NSRange secondRange = [movieDescription rangeOfString:@">"];
-            
-            if(secondRange.location == NSNotFound){
+            if (foundMovie) {
                 
-                trimRange = NSMakeRange(0, firstRange.location-1);
+                [movieDescriptionsArray addObject:movieDescription];
                 
-                movieDescription = [movieDescription substringWithRange:trimRange];
-                
-                break;
+                movieDescription = @"";
             }
             
-            int length = secondRange.location - firstRange.location;
-            
-            NSRange replaceRange = NSMakeRange(firstRange.location, length+1);
-            
-            movieDescription = [movieDescription stringByReplacingCharactersInRange:replaceRange withString:@" "];
-            
-            firstRange = [movieDescription rangeOfString:@"<"];
+            for (TFHppleElement *imgChild in imgChildren) {
+                
+                NSDictionary *attributes = [imgChild attributes];
+                
+                NSString *title = [attributes valueForKey:@"title"];
+                
+                if (title != nil && [title rangeOfString:@"Poster"].location != NSNotFound) {
+                    
+                    NSURL *moviePosterURL = [NSURL URLWithString:[attributes valueForKey:@"src"]];
+                    
+                    UIImage *moviePoster = [UIImage imageWithData:[NSData dataWithContentsOfURL:moviePosterURL]];
+                    
+                    [moviePostersArray addObject:moviePoster];
+                    
+                    foundMovie = YES;
+                }
+                else{
+                    
+                    foundMovie = NO;
+                }
+            }
         }
-        
-        [self.movieDescriptions setObject:movieDescription forKey:movieKey];
-        
-        movieCount++;
-        
+        else if (foundMovie){
+            
+            movieDescription = [self createMovieDescription:movieDescription fromElement:element];
+        }
     }
     
+    if (foundMovie) {
+        
+        [movieDescriptionsArray addObject:movieDescription];
+        
+        movieDescription = @"";
+    }
+    
+    self.moviePostersArray = [moviePostersArray copy];
+    
+    self.movieDescriptionsArray = [movieDescriptionsArray copy];
+    
     return 0;
+}
+
+- (NSArray *)imgChildrenFromElement:(TFHppleElement *)element
+{
+    NSArray *imgChildren = [element childrenWithTagName:@"img"];
+    
+    if ([imgChildren count] > 0) {
+        return imgChildren;
+    }
+    
+    if ([imgChildren count] == 0 && [[element children] count] > 0) {
+        
+        NSArray *elementChildren = [element children];
+        
+        for (TFHppleElement *elementChild in elementChildren) {
+            
+            NSArray *imgElementChildren = [self imgChildrenFromElement:elementChild];
+            
+            if ([imgElementChildren count] > 0) {
+                return imgElementChildren;
+            }
+        }
+    }
+    
+    return imgChildren;
+}
+
+- (NSString *)createMovieDescription:(NSString *)movieDescription fromElement:(TFHppleElement *)element
+{
+    NSArray *children = [element children];
+    
+    for (TFHppleElement *child in children) {
+        
+        NSString *text = [child text];
+        
+        if (text != nil) {
+            movieDescription = [[movieDescription stringByAppendingString:text] stringByAppendingString:@"\n"];
+        }
+        
+        NSString *content = [child content];
+        
+        if (content != nil) {
+            movieDescription = [[movieDescription stringByAppendingString:content] stringByAppendingString:@"\n"];
+        }
+        
+        if ([[child children] count] > 0) {
+            [self createMovieDescription:movieDescription fromElement:child];
+        }
+    }
+    
+    return movieDescription;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -435,7 +351,7 @@
         return 398.0;
     }
     
-    if (self.pageLoadError && row == 0) {
+    if (self.loadingError && row == 0) {
         return 131.0;
     }
     

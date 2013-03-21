@@ -10,8 +10,6 @@
 
 @interface NDSMovieDescriptionViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *movieLabel;
-@property (weak, nonatomic) IBOutlet UITextView *movieDescriptionTextView;
 @property (copy, nonatomic) NSString *movieTitle;
 @property (copy, nonatomic) NSString *movieDescription;
 

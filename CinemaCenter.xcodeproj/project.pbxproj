@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6602755A16E4FE320076077A /* NDSXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6602755916E4FE320076077A /* NDSXMLParser.m */; };
 		6613D64216E163CC002AACDA /* Core_Data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6613D64016E163CC002AACDA /* Core_Data.xcdatamodeld */; };
 		66494A5A16E106740042C942 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494A5916E106740042C942 /* UIKit.framework */; };
 		66494A5C16E106740042C942 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494A5B16E106740042C942 /* Foundation.framework */; };
@@ -58,11 +57,12 @@
 		66494B0616E108640042C942 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494B0416E108640042C942 /* libxml2.dylib */; };
 		66494B1B16E10A1A0042C942 /* libPayPalMPL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494B1016E10A1A0042C942 /* libPayPalMPL.a */; };
 		66494B1F16E10B0A0042C942 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494B1E16E10B0A0042C942 /* icon.png */; };
+		668039DC16EE93F000D7F397 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 668039D916EE93F000D7F397 /* TFHpple.m */; };
+		668039DD16EE93F000D7F397 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 668039DB16EE93F000D7F397 /* TFHppleElement.m */; };
+		668039E016EE93FA00D7F397 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 668039DF16EE93FA00D7F397 /* XPathQuery.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6602755816E4FE320076077A /* NDSXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSXMLParser.h; sourceTree = "<group>"; };
-		6602755916E4FE320076077A /* NDSXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSXMLParser.m; sourceTree = "<group>"; };
 		6613D64116E163CC002AACDA /* Core_Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Core_Data.xcdatamodel; sourceTree = "<group>"; };
 		66494A5616E106740042C942 /* CinemaCenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinemaCenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66494A5916E106740042C942 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -141,6 +141,12 @@
 		66494B1916E10A1A0042C942 /* PayPalReceiverAmounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalReceiverAmounts.h; sourceTree = "<group>"; };
 		66494B1A16E10A1A0042C942 /* PayPalReceiverPaymentDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalReceiverPaymentDetails.h; sourceTree = "<group>"; };
 		66494B1E16E10B0A0042C942 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		668039D816EE93F000D7F397 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
+		668039D916EE93F000D7F397 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
+		668039DA16EE93F000D7F397 /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
+		668039DB16EE93F000D7F397 /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
+		668039DE16EE93FA00D7F397 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		668039DF16EE93FA00D7F397 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +218,7 @@
 				66494A7F16E107200042C942 /* Controllers */,
 				66494A8016E107420042C942 /* Resources */,
 				66494A6016E106740042C942 /* Supporting Files */,
+				668039D716EE93E400D7F397 /* Hpple */,
 				66494B0F16E109CE0042C942 /* PayPal API */,
 			);
 			path = CinemaCenter;
@@ -258,8 +265,6 @@
 				66494A8816E107870042C942 /* NDSMapAnnotation.m */,
 				66494A8916E107870042C942 /* NDSReceipt.h */,
 				66494A8A16E107870042C942 /* NDSReceipt.m */,
-				6602755816E4FE320076077A /* NDSXMLParser.h */,
-				6602755916E4FE320076077A /* NDSXMLParser.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -331,6 +336,19 @@
 				66494B1A16E10A1A0042C942 /* PayPalReceiverPaymentDetails.h */,
 			);
 			name = "PayPal API";
+			sourceTree = "<group>";
+		};
+		668039D716EE93E400D7F397 /* Hpple */ = {
+			isa = PBXGroup;
+			children = (
+				668039D816EE93F000D7F397 /* TFHpple.h */,
+				668039D916EE93F000D7F397 /* TFHpple.m */,
+				668039DA16EE93F000D7F397 /* TFHppleElement.h */,
+				668039DB16EE93F000D7F397 /* TFHppleElement.m */,
+				668039DE16EE93FA00D7F397 /* XPathQuery.h */,
+				668039DF16EE93FA00D7F397 /* XPathQuery.m */,
+			);
+			name = Hpple;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -432,7 +450,9 @@
 				66494AB016E1079E0042C942 /* NDSReceiptsViewController.m in Sources */,
 				66494AB116E1079E0042C942 /* NDSReceiptViewController.m in Sources */,
 				6613D64216E163CC002AACDA /* Core_Data.xcdatamodeld in Sources */,
-				6602755A16E4FE320076077A /* NDSXMLParser.m in Sources */,
+				668039DC16EE93F000D7F397 /* TFHpple.m in Sources */,
+				668039DD16EE93F000D7F397 /* TFHppleElement.m in Sources */,
+				668039E016EE93FA00D7F397 /* XPathQuery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +484,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = /usr/lib/libxml2.dylib;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -475,9 +496,12 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lxml2";
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 			};
 			name = Debug;
 		};
@@ -495,13 +519,17 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = /usr/lib/libxml2.dylib;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-lxml2";
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

@@ -15,6 +15,8 @@
 
 @interface NDSMovieTicketsCheckoutViewController ()
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITextField *subtotalTextField;
 @property (nonatomic, assign) double subtotal;
 @property (strong, nonatomic) NSMutableArray *arrayOfTicketTypes;
 @property (strong, nonatomic) NSMutableArray *arrayOfTicketPrices;
@@ -26,6 +28,7 @@
 @property (nonatomic, strong) PayPalPayment *currentPayment;
 @property (strong, nonatomic) NSMutableDictionary *payKeysDictionary;
 @property (strong, nonatomic) NSMutableArray *receiptsArray;
+@property (nonatomic, copy) NSString *purchaseDate;
 
 @end
 

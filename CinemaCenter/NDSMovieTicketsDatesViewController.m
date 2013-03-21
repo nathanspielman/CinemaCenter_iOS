@@ -8,20 +8,15 @@
 
 #import "NDSMovieTicketsDatesViewController.h"
 #import "NDSMovieTicketsShowtimesViewController.h"
-#import "NDSAppDelegate.h"
-#import "NDSScheduleViewController.h"
+#import "TFHpple.h"
 
 @interface NDSMovieTicketsDatesViewController ()
 
-@property (strong, nonatomic) NSMutableDictionary *dictionaryOfDaysText;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (assign, nonatomic) NSInteger pageLoadError;
 @property (nonatomic) BOOL loading;
-@property (strong, nonatomic) NSMutableDictionary *dictionaryOfDatesText;
-@property (strong, nonatomic) NSMutableDictionary *dictionaryOfShowtimesText;
-@property (nonatomic, assign) int daysRemoved;
-@property (strong,nonatomic) NSArray *htmlOriginalSymbolArray;
-@property (strong,nonatomic) NSArray *htmlReplacedSymbolArray;
+@property (assign, nonatomic) NSInteger loadingError;
+@property (strong, nonatomic) NSArray *scheduleDayKeysArray;
+@property (strong, nonatomic) NSDictionary *scheduleShowtimesDictionary;
 
 @end
 
@@ -36,9 +31,6 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:[UIApplication sharedApplication]];
     
-    self.htmlOriginalSymbolArray = ((NDSAppDelegate *)[[UIApplication sharedApplication]delegate]).htmlOriginalSymbolArray;
-    self.htmlReplacedSymbolArray = ((NDSAppDelegate *)[[UIApplication sharedApplication]delegate]).htmlReplacedSymbolArray;
-    
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshView)];
     
     self.navigationItem.rightBarButtonItem = refreshButton;
@@ -49,11 +41,11 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     
-    if (self.pageLoadError || self.loading) {
+    if (self.loadingError || self.loading) {
         
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             
-            self.pageLoadError = [self parseWebsiteText];
+            self.loadingError = [self parseWebsiteHTML];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
@@ -69,7 +61,7 @@
 {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     
-    if (self.pageLoadError || self.loading) {
+    if (self.loadingError || self.loading) {
         
         self.loading = YES;
                 
@@ -79,7 +71,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    self.pageLoadError = [self parseWebsiteText];
+    self.loadingError = [self parseWebsiteHTML];
     
     [self.tableView reloadData];
 }
@@ -105,15 +97,13 @@
     
     int row = [[self.tableView indexPathForSelectedRow]row];
     
-    NSString *dayKey = [[NSString alloc]initWithFormat:@"day%d", row+1+self.daysRemoved];
+    NSString *dayKey = [self.scheduleDayKeysArray objectAtIndex:row];
     
-    NSString *dateText = [self.dictionaryOfDatesText objectForKey:dayKey];
+    NSArray *showtimesArray = [self.scheduleShowtimesDictionary objectForKey:dayKey];
     
-    NSString *showtimesText = [self.dictionaryOfShowtimesText objectForKey:dayKey];
+    destination.dateText = dayKey;
     
-    destination.dateText = dateText;
-    
-    destination.showtimesText = showtimesText;
+    destination.showtimesArray = showtimesArray;
 }
 
 #pragma mark -
@@ -121,11 +111,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    if (self.loading || self.pageLoadError){
+    if (self.loading || self.loadingError){
         return 1;
     }
     
-    return [self.dictionaryOfDaysText count];    
+    return [self.scheduleDayKeysArray count];
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -145,7 +135,7 @@
         return cell;
     }
     
-    if (self.pageLoadError && indexPath.row == 0) {
+    if (self.loadingError && indexPath.row == 0) {
         
         NSString *CellIdentifier = @"MoviePosterErrorCell";
         
@@ -155,7 +145,7 @@
         
         NSString *errorMessage = nil;
         
-        if(self.pageLoadError == -1){
+        if(self.loadingError == -1){
             
             errorMessage = @"The application could not connect to Cinema Center's website for film data, please check network connection and restart the application";
         }
@@ -173,183 +163,74 @@
         
     cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     
-    NSString *dayKey = [[NSString alloc]initWithFormat:@"day%d", indexPath.row+1+self.daysRemoved];
-    
-    NSString *dayText = [self.dictionaryOfDaysText objectForKey:dayKey];
-    
-    NSRange range = [dayText rangeOfString:@"\n"];
-    
-    NSString *dateText = [dayText substringToIndex:range.location+1];
-    
-    NSString *showtimesText = [dayText substringFromIndex:range.location+1];
-    
-    [self.dictionaryOfDatesText setObject:dateText forKey:dayKey];
-    
-    [self.dictionaryOfShowtimesText setObject:showtimesText forKey:dayKey];
+    NSString *dayKey = [self.scheduleDayKeysArray objectAtIndex:indexPath.row];
     
     cell.textLabel.opaque = NO;
     
     cell.textLabel.backgroundColor = [UIColor clearColor];
     
-    cell.textLabel.text = dateText;
+    cell.textLabel.text = dayKey;
     
     return cell;
 }
 
--(int)parseWebsiteText
+- (int)parseWebsiteHTML
 {
-    self.pageLoadError = NO;
+    self.loadingError = NO;
     
-    self.dictionaryOfDaysText = [[NSMutableDictionary alloc]init];
+    NSMutableArray *scheduleKeysArray = [[NSMutableArray alloc] init];
     
-    self.dictionaryOfDatesText = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *scheduleDictionary = [[NSMutableDictionary alloc] init];
     
-    self.dictionaryOfShowtimesText = [[NSMutableDictionary alloc]init];
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://cinemacenter.org/movies/index.php"]];
     
-    NSString *ccMovieSchedule = @"http://cinemacenter.org/movies/index.php";
-    
-    NSURL *ccURL = [NSURL URLWithString:ccMovieSchedule];
-    
-    NSError *error;
-    
-    NSString *ccPageContent = [NSString stringWithContentsOfURL:ccURL encoding:NSASCIIStringEncoding error:&error];
-    
-    if(ccPageContent == nil){
-        self.pageLoadError = YES;
+    if (data == nil) {
+        self.loadingError = YES;
         return -1;
     }
     
-    NSMutableArray *dayRangeLocations = [[NSMutableArray alloc]init];
+    TFHpple *document = [[TFHpple alloc] initWithHTMLData:data];
     
-    NSRange searchRange, foundRange;
-    
-    
-    //Get rid of all the stuff before "Movie Schedule"
-    
-    foundRange = [ccPageContent rangeOfString:@"Movie Schedule"];
-    
-    if(foundRange.location == NSNotFound){
-        
-        self.pageLoadError = YES;
+    if (document == nil) {
+        self.loadingError = YES;
         return -2;
     }
     
-    NSRange movieScheduleRange = NSMakeRange(foundRange.location, ([ccPageContent length] - foundRange.location));
+    NSArray *elements = [document searchWithXPathQuery:@"//p"];
     
-    ccPageContent = [ccPageContent substringWithRange:movieScheduleRange];
-    
-    
-    //Get rid of all the stuff after "<!-- End of PageLime Text Stack -->"
-    
-    foundRange = [ccPageContent rangeOfString:@"<!-- End of PageLime Text Stack -->"];
-    
-    if(foundRange.location == NSNotFound){
-        
-        self.pageLoadError = YES;
+    if (elements == nil) {
+        self.loadingError = YES;
         return -3;
     }
     
-    movieScheduleRange = NSMakeRange(0, foundRange.location);
+    NSString *dayKey = nil;
     
-    ccPageContent = [ccPageContent substringWithRange:movieScheduleRange];
+    BOOL newDay = true;
     
-    
-    NSRange firstRange = [ccPageContent rangeOfString:@"<"];
-    
-    while (firstRange.location != NSNotFound) {
+    for(TFHppleElement *element in elements){
         
-        NSRange secondRange = [ccPageContent rangeOfString:@">"];
+        NSString *elementText = [element text];
         
-        if(secondRange.location == NSNotFound){
-            break;
+        if([elementText length] == 1){
+            newDay = YES;
+            continue;
         }
-        
-        int length = secondRange.location - firstRange.location;
-        
-        NSRange replaceRange = NSMakeRange(firstRange.location, length+1);
-        
-        ccPageContent = [ccPageContent stringByReplacingCharactersInRange:replaceRange withString:@" "];
-        
-        firstRange = [ccPageContent rangeOfString:@"<"];
-    }
-    
-    for (int i = 0; i < [self.htmlOriginalSymbolArray count]; i++) {
-        
-        NSString *originalSymbol = [self.htmlOriginalSymbolArray objectAtIndex:i];
-        
-        NSString *replacedSymbol = [self.htmlReplacedSymbolArray objectAtIndex:i];
-        
-        ccPageContent = [ccPageContent stringByReplacingOccurrencesOfString:originalSymbol withString:replacedSymbol];
-    }
-    
-    NSArray *daysOfWeek = [NSArray arrayWithObjects:@"Sunday", @"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday", nil];
-    
-    for (NSString *day in daysOfWeek) {
-        
-        searchRange = NSMakeRange(0,[ccPageContent length]);
-        
-        while (searchRange.location < [ccPageContent length]) {
+        else if (newDay){
             
-            searchRange.length = [ccPageContent length] - searchRange.location;
+            dayKey = elementText;
             
-            foundRange = [ccPageContent rangeOfString:day options:NSCaseInsensitiveSearch range:searchRange];
+            [scheduleKeysArray addObject:dayKey];
             
-            if (foundRange.location != NSNotFound) {
-                // found an occurrence of the substring! do stuff here
-                
-                [dayRangeLocations addObject:[NSNumber numberWithInt:foundRange.location]];
-                
-                searchRange.location = foundRange.location+foundRange.length;
-            }
-            else {
-                // no more substring to find
-                break;
-            }
-        }
-    }
-    
-    NSArray *dayRangeLocationsSorted = [dayRangeLocations sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2)
-                                        {
-                                            int int1 = [obj1 integerValue];
-                                            int int2 = [obj2 integerValue];
-                                            
-                                            if( int1 > int2 )
-                                            {
-                                                return NSOrderedDescending;
-                                            }
-                                            else if ( int1 < int2 )
-                                            {
-                                                return NSOrderedAscending;
-                                            }
-                                            return NSOrderedSame;
-                                        }];
-    
-    for(int i = 0; i < [dayRangeLocationsSorted count]; i++){
-        
-        NSString *day = nil;
-        
-        NSInteger endingIndex;
-        
-        NSInteger startingIndex = [[dayRangeLocationsSorted objectAtIndex:i]integerValue];
-        
-        if(i+1 != [dayRangeLocationsSorted count]){
+            [scheduleDictionary setValue:[[NSMutableArray alloc] init] forKey:dayKey];
             
-            endingIndex = [[dayRangeLocationsSorted objectAtIndex:i+1]integerValue]-1;
+            newDay = NO;
+            
+            continue;
         }
         else{
             
-            endingIndex = [ccPageContent length];
+            [[scheduleDictionary objectForKey:dayKey] addObject:elementText];
         }
-        
-        NSInteger length = endingIndex - startingIndex;
-        
-        NSRange dayRange = NSMakeRange(startingIndex, length);
-        
-        day = [ccPageContent substringWithRange:dayRange];
-        
-        NSString *dayKey = [[NSString alloc]initWithFormat:@"day%d",i+1];
-        
-        [self.dictionaryOfDaysText setObject:day forKey:dayKey];
     }
     
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
@@ -357,40 +238,40 @@
     NSDate *now = [[NSDate alloc] init];
     NSString *today = [format stringFromDate:now];
     
-    NSString *dayKey = nil;
+    dayKey = nil;
     
-    for (int i = 0; i < [self.dictionaryOfDaysText count]; i++) {
+    int j = 0;
+    
+    for (int i = 0; i < [scheduleKeysArray count]; i++) {
         
-        dayKey = [[NSString alloc]initWithFormat:@"day%d",i+1];
+        dayKey = [scheduleKeysArray objectAtIndex:i];
         
-        NSString *dayText = [self.dictionaryOfDaysText objectForKey:dayKey];
-        
-        NSRange foundRange = [dayText rangeOfString:today];
+        NSRange foundRange = [dayKey rangeOfString:today];
         
         if (foundRange.location != NSNotFound) {
             break;
         }
         
-        dayKey = nil;
+        j++;
     }
     
-    self.daysRemoved = 0;
+    for (int i = 0; i < j; i++) {
         
-    if (dayKey != nil) {
+        dayKey = [scheduleKeysArray objectAtIndex:i];
         
-        for (int i = 0; i < [self.dictionaryOfDaysText count]; i++) {
-            
-            NSString *key = [[NSString alloc]initWithFormat:@"day%d",i+1];
-            
-            if([key isEqualToString:dayKey]){
-                break;
-            }
-            
-            [self.dictionaryOfDaysText removeObjectForKey:key];
-            
-            self.daysRemoved++;
-        }        
+        [scheduleDictionary removeObjectForKey:dayKey];
     }
+    
+    NSMutableArray *dayKeysSaved = [[NSMutableArray alloc] init];
+    
+    for (int i = j; i < [scheduleKeysArray count]; i++) {
+        
+        [dayKeysSaved addObject:[scheduleKeysArray objectAtIndex:i]];
+    }
+    
+    self.scheduleDayKeysArray = [dayKeysSaved copy];
+    
+    self.scheduleShowtimesDictionary = [scheduleDictionary copy];
     
     return 0;
 }
@@ -403,7 +284,7 @@
         return 398.0;
     }
     
-    if (self.pageLoadError && row == 0) {
+    if (self.loadingError && row == 0) {
         return 131.0;
     }
     

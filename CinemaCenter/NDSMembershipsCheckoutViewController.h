@@ -14,10 +14,5 @@
 
 @property (copy, nonatomic) NSString *dateText;
 @property (nonatomic, copy) NSString *showtimeText;
-@property (nonatomic, copy) NSString *purchaseDate;
-
-@property (weak, nonatomic) IBOutlet UITextField *subtotalTextField;
-
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

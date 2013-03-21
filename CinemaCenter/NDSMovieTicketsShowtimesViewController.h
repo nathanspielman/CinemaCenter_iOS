@@ -11,7 +11,6 @@
 @interface NDSMovieTicketsShowtimesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (copy, nonatomic) NSString *dateText;
-@property (nonatomic, copy) NSString *showtimesText;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *showtimesArray;
 
 @end

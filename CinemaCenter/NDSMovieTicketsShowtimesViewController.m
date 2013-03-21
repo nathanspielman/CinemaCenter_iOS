@@ -8,10 +8,10 @@
 
 #import "NDSMovieTicketsShowtimesViewController.h"
 #import "NDSMovieTicketsCheckoutViewController.h"
-#import "NDSAppDelegate.h"
 
 @interface NDSMovieTicketsShowtimesViewController ()
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableDictionary *dictionaryOfShowtimes;
 
 @end
@@ -24,74 +24,32 @@
     
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.png"]];
     
-    self.dictionaryOfShowtimes = [[NSMutableDictionary alloc]init];
+    NSMutableArray *showtimesToKeep = [[NSMutableArray alloc] init];
     
-    int i = 1;
-    
-    BOOL end = NO;
-    
-    while (true) {
+    for (int i = 0; i < [self.showtimesArray count]; i++) {
         
-        NSRange range1 = [self.showtimesText rangeOfString:@"\n"];
-        
-        NSRange foundRage = NSMakeRange(0, range1.location+1);
-        
-        NSString *showtime = [self.showtimesText substringWithRange:foundRage];
-        
-        NSRange trimRange = NSMakeRange(range1.location+1, [self.showtimesText length] - range1.location-1);
-        
-        self.showtimesText = [self.showtimesText substringWithRange:trimRange];
-        
-        NSRange range2 = [self.showtimesText rangeOfString:@"\n"];
-        
-        if(range2.location == NSNotFound){
-            end = YES;
-        }
-        
-        BOOL foundInteger = NO;
-        
-        for(int j = 0; j < 10; j++){
-            
-            NSString *integer = [[NSString alloc]initWithFormat:@"%d", j];
-            
-            NSRange foundRange = [showtime rangeOfString:integer];
-            
-            if (foundRange.location != NSNotFound) {
-                foundInteger = YES;
-                break;
-            }
-        }
-        
-        BOOL foundColon = NO;
+        NSString *showtime = [self.showtimesArray objectAtIndex:i];
         
         NSRange foundRange = [showtime rangeOfString:@":"];
         
         if (foundRange.location != NSNotFound) {
-            foundColon = YES;
-        }
-        
-        if (!foundInteger && !foundColon) {
             
-            if (end) {
-                break;
+            for(int j = 0; j < 10; j++){
+                
+                NSString *integer = [[NSString alloc] initWithFormat:@"%d", j];
+                
+                NSRange foundRange = [showtime rangeOfString:integer];
+                
+                if (foundRange.location != NSNotFound) {
+                    
+                    [showtimesToKeep addObject:showtime];
+                    break;
+                }
             }
-            
-            continue;
-        }
-        
-        NSString *showtimeKey = [[NSString alloc]initWithFormat:@"showtime%d", i];
-        
-        showtime = [showtime substringFromIndex:1];
-        
-        [self.dictionaryOfShowtimes setObject:showtime forKey:showtimeKey];
-        
-        i++;
-        
-        if (end) {
-            break;
         }
     }
     
+    self.showtimesArray = [showtimesToKeep copy];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -111,13 +69,11 @@
     
     destination.dateText = self.dateText;
     
-    int row = [[self.tableView indexPathForSelectedRow]row]+1;
+    int row = [[self.tableView indexPathForSelectedRow]row];
     
-    NSString *showtimeKey = [[NSString alloc]initWithFormat:@"showtime%d", row];
-    
-    NSString *showtimeText = [self.dictionaryOfShowtimes objectForKey:showtimeKey];
-    
-    destination.showtimeText = showtimeText;
+    NSString *showtimeKey = [self.showtimesArray objectAtIndex:row];
+        
+    destination.showtimeText = showtimeKey;
 }
 
 #pragma mark -
@@ -134,7 +90,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {    
-    int count = [self.dictionaryOfShowtimes count];
+    int count = [self.showtimesArray count];
     return count;
 }
 
@@ -144,15 +100,13 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    NSString *showtimeKey = [[NSString alloc]initWithFormat:@"showtime%d", [indexPath row]+1];
-    
-    NSString *showtimeText = [self.dictionaryOfShowtimes objectForKey:showtimeKey];
-    
+    NSString *showtimeKey = [self.showtimesArray objectAtIndex:indexPath.row];
+        
     cell.textLabel.opaque = NO;
     
     cell.textLabel.backgroundColor = [UIColor clearColor];
     
-    cell.textLabel.text = showtimeText;
+    cell.textLabel.text = showtimeKey;
     
     return cell;
 }
