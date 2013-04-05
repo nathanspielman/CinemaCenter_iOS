@@ -363,7 +363,7 @@
         return 1;
     }
     else if (section == 1) {
-        return 5;
+        return [self.dictionaryOfTicketTypes count];
     }
     else {
         return 2;

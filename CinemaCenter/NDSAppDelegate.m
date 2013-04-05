@@ -30,9 +30,9 @@
     
     self.htmlReplacedSymbolArray = [[NSArray alloc]initWithObjects:@" ", @"&", @"\"", @"\"", @"—", @"\'", @"ü", @"ö", @"—", nil];
     
-    self.arrayOfTicketTypes = [[NSMutableArray alloc]initWithObjects:@"General: $8.00", @"Student/Senior: $6.50", @"Regular Member: $5.00", @"Student/Senior Member: $4.00", @"IPFW/St. Francis Student w/ID: $3.00", nil];
+    self.arrayOfTicketTypes = [[NSMutableArray alloc]initWithObjects:@"General: $8.00", @"Student/Senior: $6.50", @"Regular Member: $5.00", @"Student/Senior Member: $4.00", nil];
     
-    self.arrayOfTicketPrices = [[NSMutableArray alloc]initWithObjects:[NSNumber numberWithDouble:8.00], [NSNumber numberWithDouble:6.50], [NSNumber numberWithDouble:5.00], [NSNumber numberWithDouble:4.00], [NSNumber numberWithDouble:3.00], nil];
+    self.arrayOfTicketPrices = [[NSMutableArray alloc]initWithObjects:[NSNumber numberWithDouble:8.00], [NSNumber numberWithDouble:6.50], [NSNumber numberWithDouble:5.00], [NSNumber numberWithDouble:4.00], nil];
     
     self.arrayOfMembershipTypes = [[NSMutableArray alloc]initWithObjects:@"Student: $20.00", @"Individual: $40.00", @"Dual: $75.00", @"Family: $100.00", @"Film Buff: $150.00", @"Producer (Individual Patron): $250.00", @"Director (Dual Patron): $500.00", @"Mogul (Mega Patron): $1000.00", nil];
     

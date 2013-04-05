@@ -186,7 +186,7 @@
     
     CellTableIdentifier = @"TicketTypeCell";
         
-    cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    cell = [self.tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     
     UILabel *ticketTypeLabel = (UILabel *)[cell viewWithTag:5];
     
