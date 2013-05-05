@@ -308,9 +308,9 @@
     
     self.currentPayment.subTotal = (NSDecimalNumber *)[NSDecimalNumber numberWithDouble:self.subtotal];
     
-    self.currentPayment.recipient = @"fortwaynecinemacenter@paypal.com";
+    self.currentPayment.recipient = @"movies@cinemacenter.org";
     
-    self.currentPayment.merchantName = @"Fort Wayne Cinema Center";
+    self.currentPayment.merchantName = @"Cinema Center";
     
     self.currentPayment.description = [self currentPaymentDescription];
     

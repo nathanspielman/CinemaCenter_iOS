@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -822,7 +822,7 @@
                                             <constraint firstItem="Xcq-VB-9WA" firstAttribute="top" secondItem="lL1-bC-jyd" secondAttribute="top" constant="24" id="oOE-DM-EgN"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TicketTypeOriginalCell" rowHeight="58" id="9Lo-5i-Kml" customClass="NDSTicketTypeCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TicketTypeOriginalCell" rowHeight="58" id="9Lo-5i-Kml">
                                         <rect key="frame" x="0.0" y="72" width="320" height="58"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -879,13 +879,8 @@
                                             <constraint firstItem="iOt-Za-u0k" firstAttribute="baseline" secondItem="0fz-fL-fiu" secondAttribute="baseline" type="default" id="twG-1s-u5R"/>
                                             <constraint firstItem="Uwg-df-Ymh" firstAttribute="top" secondItem="9Lo-5i-Kml" secondAttribute="top" constant="23" id="vnl-Ys-uKm"/>
                                         </constraints>
-                                        <connections>
-                                            <outlet property="ticketQuantityTextField" destination="iOt-Za-u0k" id="ZJ8-e0-uOj"/>
-                                            <outlet property="ticketTotalTextField" destination="Uwg-df-Ymh" id="kZC-Ke-R7m"/>
-                                            <outlet property="ticketTypeLabel" destination="P1U-N2-1lr" id="knK-Im-wR0"/>
-                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TicketTypeCell" rowHeight="60" id="yn3-9y-40S" customClass="NDSTicketTypeCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TicketTypeCell" rowHeight="60" id="yn3-9y-40S">
                                         <rect key="frame" x="0.0" y="130" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -945,12 +940,6 @@
                                             <constraint firstItem="IOS-iW-oMy" firstAttribute="trailing" secondItem="Bd5-Jm-YOu" secondAttribute="trailing" type="user" id="gGj-4h-HJC"/>
                                             <constraint firstItem="JZd-oL-y7Q" firstAttribute="baseline" secondItem="Bd5-Jm-YOu" secondAttribute="baseline" type="default" id="xdh-3M-c3y"/>
                                         </constraints>
-                                        <connections>
-                                            <outlet property="ticketPriceLabel" destination="UDs-cX-fX3" id="hCz-7s-z2y"/>
-                                            <outlet property="ticketQuantityTextField" destination="JZd-oL-y7Q" id="lX6-jZ-a9G"/>
-                                            <outlet property="ticketTotalTextField" destination="Bd5-Jm-YOu" id="Rbf-VU-z3f"/>
-                                            <outlet property="ticketTypeLabel" destination="IOS-iW-oMy" id="xhC-7O-guF"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="SubtotalCell" rowHeight="32" id="6HJ-76-eRe">
                                         <rect key="frame" x="0.0" y="190" width="320" height="32"/>
@@ -1917,9 +1906,6 @@
             <relationships>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
-        </class>
-        <class className="NDSTicketTypeCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NDSTicketTypeCell.h"/>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>

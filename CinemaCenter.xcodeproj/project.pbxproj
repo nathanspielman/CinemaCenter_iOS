@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6602755A16E4FE320076077A /* NDSXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6602755916E4FE320076077A /* NDSXMLParser.m */; };
 		6613D64216E163CC002AACDA /* Core_Data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6613D64016E163CC002AACDA /* Core_Data.xcdatamodeld */; };
 		66494A5A16E106740042C942 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494A5916E106740042C942 /* UIKit.framework */; };
 		66494A5C16E106740042C942 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494A5B16E106740042C942 /* Foundation.framework */; };
@@ -58,11 +57,13 @@
 		66494B0616E108640042C942 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494B0416E108640042C942 /* libxml2.dylib */; };
 		66494B1B16E10A1A0042C942 /* libPayPalMPL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494B1016E10A1A0042C942 /* libPayPalMPL.a */; };
 		66494B1F16E10B0A0042C942 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494B1E16E10B0A0042C942 /* icon.png */; };
+		66840733173465D2000E7447 /* NDSCinemaCenterDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 66840732173465D2000E7447 /* NDSCinemaCenterDay.m */; };
+		66840736173467CE000E7447 /* NDSCinemaCenterApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 66840735173467CE000E7447 /* NDSCinemaCenterApi.m */; };
+		6684073C17348A9B000E7447 /* NDSCinemaCenterMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 6684073B17348A9A000E7447 /* NDSCinemaCenterMovie.m */; };
+		92DBF246B29D4D0B858F427E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCB7334AC85469B9EA450CF /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6602755816E4FE320076077A /* NDSXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSXMLParser.h; sourceTree = "<group>"; };
-		6602755916E4FE320076077A /* NDSXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSXMLParser.m; sourceTree = "<group>"; };
 		6613D64116E163CC002AACDA /* Core_Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Core_Data.xcdatamodel; sourceTree = "<group>"; };
 		66494A5616E106740042C942 /* CinemaCenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinemaCenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66494A5916E106740042C942 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -141,6 +142,15 @@
 		66494B1916E10A1A0042C942 /* PayPalReceiverAmounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalReceiverAmounts.h; sourceTree = "<group>"; };
 		66494B1A16E10A1A0042C942 /* PayPalReceiverPaymentDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalReceiverPaymentDetails.h; sourceTree = "<group>"; };
 		66494B1E16E10B0A0042C942 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		66840731173465D2000E7447 /* NDSCinemaCenterDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSCinemaCenterDay.h; sourceTree = "<group>"; };
+		66840732173465D2000E7447 /* NDSCinemaCenterDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSCinemaCenterDay.m; sourceTree = "<group>"; };
+		66840734173467CE000E7447 /* NDSCinemaCenterApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSCinemaCenterApi.h; sourceTree = "<group>"; };
+		66840735173467CE000E7447 /* NDSCinemaCenterApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSCinemaCenterApi.m; sourceTree = "<group>"; };
+		6684073717346895000E7447 /* NDSCinemaCenterApiKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSCinemaCenterApiKeys.h; sourceTree = "<group>"; };
+		6684073A17348A9A000E7447 /* NDSCinemaCenterMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSCinemaCenterMovie.h; sourceTree = "<group>"; };
+		6684073B17348A9A000E7447 /* NDSCinemaCenterMovie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSCinemaCenterMovie.m; sourceTree = "<group>"; };
+		A053A47E91FD46DF80E588D4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		BCCB7334AC85469B9EA450CF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +171,7 @@
 				66494A5C16E106740042C942 /* Foundation.framework in Frameworks */,
 				66494A5E16E106740042C942 /* CoreGraphics.framework in Frameworks */,
 				66494B1B16E10A1A0042C942 /* libPayPalMPL.a in Frameworks */,
+				92DBF246B29D4D0B858F427E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +184,7 @@
 				66494A5F16E106740042C942 /* CinemaCenter */,
 				66494A5816E106740042C942 /* Frameworks */,
 				66494A5716E106740042C942 /* Products */,
+				A053A47E91FD46DF80E588D4 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -199,6 +211,7 @@
 				66494A5916E106740042C942 /* UIKit.framework */,
 				66494A5B16E106740042C942 /* Foundation.framework */,
 				66494A5D16E106740042C942 /* CoreGraphics.framework */,
+				BCCB7334AC85469B9EA450CF /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -258,8 +271,13 @@
 				66494A8816E107870042C942 /* NDSMapAnnotation.m */,
 				66494A8916E107870042C942 /* NDSReceipt.h */,
 				66494A8A16E107870042C942 /* NDSReceipt.m */,
-				6602755816E4FE320076077A /* NDSXMLParser.h */,
-				6602755916E4FE320076077A /* NDSXMLParser.m */,
+				6684073717346895000E7447 /* NDSCinemaCenterApiKeys.h */,
+				66840734173467CE000E7447 /* NDSCinemaCenterApi.h */,
+				66840735173467CE000E7447 /* NDSCinemaCenterApi.m */,
+				66840731173465D2000E7447 /* NDSCinemaCenterDay.h */,
+				66840732173465D2000E7447 /* NDSCinemaCenterDay.m */,
+				6684073A17348A9A000E7447 /* NDSCinemaCenterMovie.h */,
+				6684073B17348A9A000E7447 /* NDSCinemaCenterMovie.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -343,6 +361,7 @@
 				66494A5216E106740042C942 /* Sources */,
 				66494A5316E106740042C942 /* Frameworks */,
 				66494A5416E106740042C942 /* Resources */,
+				A16BCB76D1CF4899AF6191D3 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -410,6 +429,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A16BCB76D1CF4899AF6191D3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		66494A5216E106740042C942 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -432,7 +468,9 @@
 				66494AB016E1079E0042C942 /* NDSReceiptsViewController.m in Sources */,
 				66494AB116E1079E0042C942 /* NDSReceiptViewController.m in Sources */,
 				6613D64216E163CC002AACDA /* Core_Data.xcdatamodeld in Sources */,
-				6602755A16E4FE320076077A /* NDSXMLParser.m in Sources */,
+				66840733173465D2000E7447 /* NDSCinemaCenterDay.m in Sources */,
+				66840736173467CE000E7447 /* NDSCinemaCenterApi.m in Sources */,
+				6684073C17348A9B000E7447 /* NDSCinemaCenterMovie.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +546,7 @@
 		};
 		66494A7A16E106740042C942 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A053A47E91FD46DF80E588D4 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CinemaCenter/CinemaCenter-Prefix.pch";
@@ -523,6 +562,7 @@
 		};
 		66494A7B16E106740042C942 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A053A47E91FD46DF80E588D4 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CinemaCenter/CinemaCenter-Prefix.pch";

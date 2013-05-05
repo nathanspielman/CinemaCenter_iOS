@@ -16,11 +16,11 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
-@property (strong,nonatomic) NSArray *htmlOriginalSymbolArray;
-@property (strong,nonatomic) NSArray *htmlReplacedSymbolArray;
-
 @property (strong, nonatomic) NSMutableArray *arrayOfTicketTypes;
 @property (strong, nonatomic) NSMutableArray *arrayOfTicketPrices;
+
+@property (strong,nonatomic) NSArray *htmlOriginalSymbolArray;
+@property (strong,nonatomic) NSArray *htmlReplacedSymbolArray;
 
 @property (strong, nonatomic) NSMutableArray *arrayOfMembershipTypes;
 @property (strong, nonatomic) NSMutableArray *arrayOfMembershipPrices;

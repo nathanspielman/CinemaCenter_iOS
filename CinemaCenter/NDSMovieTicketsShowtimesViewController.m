@@ -25,26 +25,33 @@
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.png"]];
     
     self.dictionaryOfShowtimes = [[NSMutableDictionary alloc]init];
-    
+        
     int i = 1;
     
     BOOL end = NO;
     
     while (true) {
         
-        NSRange range1 = [self.showtimesText rangeOfString:@"\n"];
+        NSRange range1, range2, trimRange, foundRange;
         
-        NSRange foundRage = NSMakeRange(0, range1.location+1);
+        NSString *showtime;
         
-        NSString *showtime = [self.showtimesText substringWithRange:foundRage];
+        range1 = [self.showtimesText rangeOfString:@"\n"];
         
-        NSRange trimRange = NSMakeRange(range1.location+1, [self.showtimesText length] - range1.location-1);
+        if(range1.location != NSNotFound){
+            
+            foundRange = NSMakeRange(0, range1.location+1);
+            
+            showtime = [self.showtimesText substringWithRange:foundRange];
+            
+            trimRange = NSMakeRange(range1.location+1, [self.showtimesText length] - range1.location-1);
+            
+            self.showtimesText = [self.showtimesText substringWithRange:trimRange];
+            
+            range2 = [self.showtimesText rangeOfString:@"\n"];
+        }
         
-        self.showtimesText = [self.showtimesText substringWithRange:trimRange];
-        
-        NSRange range2 = [self.showtimesText rangeOfString:@"\n"];
-        
-        if(range2.location == NSNotFound){
+        if(range1.location == NSNotFound || range2.location == NSNotFound){
             end = YES;
         }
         
@@ -54,7 +61,7 @@
             
             NSString *integer = [[NSString alloc]initWithFormat:@"%d", j];
             
-            NSRange foundRange = [showtime rangeOfString:integer];
+            foundRange = [showtime rangeOfString:integer];
             
             if (foundRange.location != NSNotFound) {
                 foundInteger = YES;
@@ -64,7 +71,7 @@
         
         BOOL foundColon = NO;
         
-        NSRange foundRange = [showtime rangeOfString:@":"];
+        foundRange = [showtime rangeOfString:@":"];
         
         if (foundRange.location != NSNotFound) {
             foundColon = YES;
@@ -81,7 +88,7 @@
         
         NSString *showtimeKey = [[NSString alloc]initWithFormat:@"showtime%d", i];
         
-        showtime = [showtime substringFromIndex:1];
+        showtime = [showtime substringFromIndex:0];
         
         [self.dictionaryOfShowtimes setObject:showtime forKey:showtimeKey];
         
