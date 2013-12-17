@@ -55,11 +55,11 @@
 		66494B0216E108570042C942 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494AFE16E108570042C942 /* libz.dylib */; };
 		66494B0516E108640042C942 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494B0316E108640042C942 /* libxml2.2.dylib */; };
 		66494B0616E108640042C942 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494B0416E108640042C942 /* libxml2.dylib */; };
-		66494B1B16E10A1A0042C942 /* libPayPalMPL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66494B1016E10A1A0042C942 /* libPayPalMPL.a */; };
 		66494B1F16E10B0A0042C942 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 66494B1E16E10B0A0042C942 /* icon.png */; };
 		66840733173465D2000E7447 /* NDSCinemaCenterDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 66840732173465D2000E7447 /* NDSCinemaCenterDay.m */; };
 		66840736173467CE000E7447 /* NDSCinemaCenterApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 66840735173467CE000E7447 /* NDSCinemaCenterApi.m */; };
 		6684073C17348A9B000E7447 /* NDSCinemaCenterMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 6684073B17348A9A000E7447 /* NDSCinemaCenterMovie.m */; };
+		6686C8F01860C4C0008C9CDB /* libPayPalMPL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6686C8E41860C4C0008C9CDB /* libPayPalMPL.a */; };
 		92DBF246B29D4D0B858F427E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCB7334AC85469B9EA450CF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -130,17 +130,6 @@
 		66494AFE16E108570042C942 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		66494B0316E108640042C942 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		66494B0416E108640042C942 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		66494B1016E10A1A0042C942 /* libPayPalMPL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPayPalMPL.a; sourceTree = "<group>"; };
-		66494B1116E10A1A0042C942 /* PayPal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPal.h; sourceTree = "<group>"; };
-		66494B1216E10A1A0042C942 /* PayPalAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalAddress.h; sourceTree = "<group>"; };
-		66494B1316E10A1A0042C942 /* PayPalAdvancedPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalAdvancedPayment.h; sourceTree = "<group>"; };
-		66494B1416E10A1A0042C942 /* PayPalAmounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalAmounts.h; sourceTree = "<group>"; };
-		66494B1516E10A1A0042C942 /* PayPalInvoiceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalInvoiceData.h; sourceTree = "<group>"; };
-		66494B1616E10A1A0042C942 /* PayPalInvoiceItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalInvoiceItem.h; sourceTree = "<group>"; };
-		66494B1716E10A1A0042C942 /* PayPalPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPayment.h; sourceTree = "<group>"; };
-		66494B1816E10A1A0042C942 /* PayPalPreapprovalDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPreapprovalDetails.h; sourceTree = "<group>"; };
-		66494B1916E10A1A0042C942 /* PayPalReceiverAmounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalReceiverAmounts.h; sourceTree = "<group>"; };
-		66494B1A16E10A1A0042C942 /* PayPalReceiverPaymentDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalReceiverPaymentDetails.h; sourceTree = "<group>"; };
 		66494B1E16E10B0A0042C942 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		66840731173465D2000E7447 /* NDSCinemaCenterDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSCinemaCenterDay.h; sourceTree = "<group>"; };
 		66840732173465D2000E7447 /* NDSCinemaCenterDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSCinemaCenterDay.m; sourceTree = "<group>"; };
@@ -149,6 +138,17 @@
 		6684073717346895000E7447 /* NDSCinemaCenterApiKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSCinemaCenterApiKeys.h; sourceTree = "<group>"; };
 		6684073A17348A9A000E7447 /* NDSCinemaCenterMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSCinemaCenterMovie.h; sourceTree = "<group>"; };
 		6684073B17348A9A000E7447 /* NDSCinemaCenterMovie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDSCinemaCenterMovie.m; sourceTree = "<group>"; };
+		6686C8E41860C4C0008C9CDB /* libPayPalMPL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPayPalMPL.a; sourceTree = "<group>"; };
+		6686C8E61860C4C0008C9CDB /* PayPal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPal.h; sourceTree = "<group>"; };
+		6686C8E71860C4C0008C9CDB /* PayPalAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalAddress.h; sourceTree = "<group>"; };
+		6686C8E81860C4C0008C9CDB /* PayPalAdvancedPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalAdvancedPayment.h; sourceTree = "<group>"; };
+		6686C8E91860C4C0008C9CDB /* PayPalAmounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalAmounts.h; sourceTree = "<group>"; };
+		6686C8EA1860C4C0008C9CDB /* PayPalInvoiceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalInvoiceData.h; sourceTree = "<group>"; };
+		6686C8EB1860C4C0008C9CDB /* PayPalInvoiceItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalInvoiceItem.h; sourceTree = "<group>"; };
+		6686C8EC1860C4C0008C9CDB /* PayPalPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPayment.h; sourceTree = "<group>"; };
+		6686C8ED1860C4C0008C9CDB /* PayPalPreapprovalDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPreapprovalDetails.h; sourceTree = "<group>"; };
+		6686C8EE1860C4C0008C9CDB /* PayPalReceiverAmounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalReceiverAmounts.h; sourceTree = "<group>"; };
+		6686C8EF1860C4C0008C9CDB /* PayPalReceiverPaymentDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalReceiverPaymentDetails.h; sourceTree = "<group>"; };
 		A053A47E91FD46DF80E588D4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		BCCB7334AC85469B9EA450CF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -168,9 +168,9 @@
 				66494AF816E108290042C942 /* Security.framework in Frameworks */,
 				66494AF616E108230042C942 /* MapKit.framework in Frameworks */,
 				66494A5A16E106740042C942 /* UIKit.framework in Frameworks */,
+				6686C8F01860C4C0008C9CDB /* libPayPalMPL.a in Frameworks */,
 				66494A5C16E106740042C942 /* Foundation.framework in Frameworks */,
 				66494A5E16E106740042C942 /* CoreGraphics.framework in Frameworks */,
-				66494B1B16E10A1A0042C942 /* libPayPalMPL.a in Frameworks */,
 				92DBF246B29D4D0B858F427E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				66494A5F16E106740042C942 /* CinemaCenter */,
+				6686C8E31860C4C0008C9CDB /* PayPal API */,
 				66494A5816E106740042C942 /* Frameworks */,
 				66494A5716E106740042C942 /* Products */,
 				A053A47E91FD46DF80E588D4 /* Pods.xcconfig */,
@@ -225,7 +226,6 @@
 				66494A7F16E107200042C942 /* Controllers */,
 				66494A8016E107420042C942 /* Resources */,
 				66494A6016E106740042C942 /* Supporting Files */,
-				66494B0F16E109CE0042C942 /* PayPal API */,
 			);
 			path = CinemaCenter;
 			sourceTree = "<group>";
@@ -333,22 +333,23 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		66494B0F16E109CE0042C942 /* PayPal API */ = {
+		6686C8E31860C4C0008C9CDB /* PayPal API */ = {
 			isa = PBXGroup;
 			children = (
-				66494B1016E10A1A0042C942 /* libPayPalMPL.a */,
-				66494B1116E10A1A0042C942 /* PayPal.h */,
-				66494B1216E10A1A0042C942 /* PayPalAddress.h */,
-				66494B1316E10A1A0042C942 /* PayPalAdvancedPayment.h */,
-				66494B1416E10A1A0042C942 /* PayPalAmounts.h */,
-				66494B1516E10A1A0042C942 /* PayPalInvoiceData.h */,
-				66494B1616E10A1A0042C942 /* PayPalInvoiceItem.h */,
-				66494B1716E10A1A0042C942 /* PayPalPayment.h */,
-				66494B1816E10A1A0042C942 /* PayPalPreapprovalDetails.h */,
-				66494B1916E10A1A0042C942 /* PayPalReceiverAmounts.h */,
-				66494B1A16E10A1A0042C942 /* PayPalReceiverPaymentDetails.h */,
+				6686C8E41860C4C0008C9CDB /* libPayPalMPL.a */,
+				6686C8E61860C4C0008C9CDB /* PayPal.h */,
+				6686C8E71860C4C0008C9CDB /* PayPalAddress.h */,
+				6686C8E81860C4C0008C9CDB /* PayPalAdvancedPayment.h */,
+				6686C8E91860C4C0008C9CDB /* PayPalAmounts.h */,
+				6686C8EA1860C4C0008C9CDB /* PayPalInvoiceData.h */,
+				6686C8EB1860C4C0008C9CDB /* PayPalInvoiceItem.h */,
+				6686C8EC1860C4C0008C9CDB /* PayPalPayment.h */,
+				6686C8ED1860C4C0008C9CDB /* PayPalPreapprovalDetails.h */,
+				6686C8EE1860C4C0008C9CDB /* PayPalReceiverAmounts.h */,
+				6686C8EF1860C4C0008C9CDB /* PayPalReceiverPaymentDetails.h */,
 			);
 			name = "PayPal API";
+			path = "CinemaCenter/PayPal API";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -553,7 +554,9 @@
 				INFOPLIST_FILE = "CinemaCenter/CinemaCenter-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/CinemaCenter\"",
+					"\\\"$(SRCROOT)/CinemaCenter\\\"",
+					/Users/Raptor/Documents/Xcode/Workspace/CinemaCenter/CinemaCenter,
+					"/Users/Raptor/Documents/Xcode/Workspace/CinemaCenter/CinemaCenter/PayPal\\ API",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -569,7 +572,9 @@
 				INFOPLIST_FILE = "CinemaCenter/CinemaCenter-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/CinemaCenter\"",
+					"\\\"$(SRCROOT)/CinemaCenter\\\"",
+					/Users/Raptor/Documents/Xcode/Workspace/CinemaCenter/CinemaCenter,
+					"/Users/Raptor/Documents/Xcode/Workspace/CinemaCenter/CinemaCenter/PayPal\\ API",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
